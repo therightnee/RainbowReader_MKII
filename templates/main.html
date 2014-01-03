@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}">
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico')}}">
+</head>
+<body>
+<div id="nav">
+	<bold id="title">Rainbow Reader</bold>
+	<a href="#news" class="category" id="new">News</a>
+	<a href="#technology" class="category" id="tec">Technology</a>
+	<a href="#business" class="category" id="biz">Business</a>
+	<a href="#religion" class="category" id="rel">Religion</a>
+	<a href="#sports" class="category" id="spo">Sports</a>
+	<a href="#leisure" class="category" id="lei">Leisure</a>
+	<a href="#music" class="category" id="muz">Music</a>
+</div>
+
+<div id="holder">
+
+</div>
+
+<script>
+
+//initalize various arrays needed for easier nav response
+
+var locations = ['news', 'technology', 'business', 'religion', 'sports', 'leisure', 'music'];
+
+var id_array = ['new', 'tec', 'biz', 'rel', 'spo', 'lei', 'muz']
+
+//Handles the AJAX calls to the backend
+
+function request(source) {
+  $.ajax({
+        type: "GET",
+        url: "/color",
+        data: {target: source},
+        async: false,
+        success: function(data) {
+          $("#holder").fadeIn('slow');
+          $("#holder").html(data);
+        }
+    });
+  };
+
+//Create the bundle function to reduce copy code
+function bundle(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+//Define the bundles
+
+var news_bundle = new bundle("new", "#e74c3c");
+
+var tech_bundle = new bundle("tec", "#f39c12");
+
+var biz_bundle = new bundle("biz", "#f1c319");
+
+var rel_bundle = new bundle("rel", "#2ecc71");
+
+var spo_bundle = new bundle("spo", "#3498db");
+
+var lei_bundle = new bundle("lei", "#2980b9");
+
+var muz_bundle = new bundle("muz", "#8e44ad");
+
+//General function; Modifies the #nav bg-color, clears #holder and calls request()
+function responder(bundle) {  
+  $(".category").css("border-bottom", "none");
+  $("#holder").hide();
+  $("#holder").empty();
+  $("#nav").css("background-color", bundle.color);
+  $("#" + bundle.name).css("border-bottom", "5px solid #ffffff");
+  request(bundle.name)
+};
+
+//initialize bundle array
+
+var bundles = [news_bundle, tech_bundle, biz_bundle, rel_bundle, spo_bundle, lei_bundle, muz_bundle];
+
+//Click response function
+
+$(".category").click(function() {
+  bundle_loc = id_array.indexOf(this.id);
+  responder(bundles[bundle_loc]);
+});
+
+//Keypress response functions
+
+
+$("body").keydown(function(e) {
+
+  var cur = window.location.href.split('#');
+
+  var tracker = locations.indexOf(cur[1]);
+
+  if(e.keyCode == 37) { // left
+    if (tracker == 0) {
+      tracker = 6
+    }
+
+    else {
+      tracker -= 1
+    }
+
+  responder(bundles[tracker]);
+  window.location.replace("#" + locations[tracker]);
+
+  }
+  else if(e.keyCode == 39) { // right
+    $("#holder").empty();
+    if (tracker == 6) {
+      tracker = 0
+    }
+
+    else {
+      tracker += 1
+    }
+
+  responder(bundles[tracker]);
+  window.location.replace("#" + locations[tracker]);
+  }
+});
+
+//Initialize the default case
+
+$(document).ready(function() {
+  check = window.location.href.split('#');
+  if (typeof check[1] == "undefined"){
+    responder(news_bundle);
+    window.location.replace("#news");
+  }
+  else {
+    var cur_loc = locations.indexOf(check[1]);
+    responder(bundles[cur_loc]);
+  }
+});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% for item in parsed %}
+<div class="format">
+    <h1>{{item.source}}</h1>
+   {% for entry in item.data %}
+    <div class="entry">
+        <a href={{entry.link}} title="{{entry.full_title}}" target="_blank">{{entry.title}}</a><br/>
+        {{entry.pub}} <br/>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}    
