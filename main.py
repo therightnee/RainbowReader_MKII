@@ -28,8 +28,10 @@ def index():
 
 @app.route('/build')
 def build():
-    reload()
-    return 'success!'
+    if cache.get('new') == None:
+        reload()
+    else:
+        return 'cached'
 
 @app.route('/color')
 def color():
