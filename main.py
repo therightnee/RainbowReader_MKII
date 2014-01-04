@@ -4,7 +4,7 @@ from datetime import datetime
 from time import mktime
 from tzlocal import get_localzone
 from feed_urls import *
-import feedparser, pytz
+import feedparser, pytz, os
 
 app = Flask(__name__)
 
@@ -65,4 +65,5 @@ def reload(group):
 ###Start the app here
 
 if __name__ == '__main__':
+     port = int(os.environ.get('PORT', 5000))
      app.run(host='0.0.0.0', port=port, debug=False)
