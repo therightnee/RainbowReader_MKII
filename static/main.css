@@ -78,7 +78,7 @@ body {
   line-height: 24px;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 1000px) {
 
   #nav {
     display: -webkit-flex;
@@ -106,7 +106,7 @@ body {
 
 }
 
-@media all and (min-width: 801px) {
+@media all and (min-width: 1001px) {
   #nav {      
     min-width: 1400px;
   }
