@@ -65,5 +65,4 @@ def reload(group):
 ###Start the app here
 
 if __name__ == '__main__':
-     app.debug = True
-     app.run()
+     app.run(host='0.0.0.0', port=port, debug=False)
