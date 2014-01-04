@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  cache_check()
   //window size check
   if (window.innerWidth <= 800) {
     $("#title").hide();

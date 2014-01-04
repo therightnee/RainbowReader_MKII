@@ -21,17 +21,36 @@ function build() {
         type: "GET",
         url: "/build",
         async: true,
-        success: function(data) {
-          first_check();
+        success: function() {
+          nav_check();
         }
     });
   };
 
+function cache_check() {
+  $.ajax({
+        type: "GET",
+        url: "/build",
+        async: true,
+        success: function(data) {
+          if (data == 'cached') {
+            nav_check();
+          }
+          else {
+            window.location.replace('/');
+          }
+
+        }
+    });
+  };
+
+
 $("#title").click(function() {
+    $("#holder").html("<strong>Initializing. This may take a minute.</strong>")
     build()
 });
 
-function first_check(){
+function nav_check(){
   //nav check
     check = window.location.href.split('#');
     if (typeof check[1] == "undefined"){
