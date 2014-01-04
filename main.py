@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, render_template, g
 from werkzeug.contrib.cache import SimpleCache 
 from datetime import datetime
 from time import mktime, clock
@@ -24,7 +24,12 @@ all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
 def index():
     return render_template('main.html')
 
-##Receive the AJAX request and render the content
+##Render the content
+
+@app.route('/build')
+def build():
+    reload()
+    return 'success!'
 
 @app.route('/color')
 def color():
