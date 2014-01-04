@@ -29,7 +29,11 @@
 
 var locations = ['news', 'technology', 'business', 'religion', 'sports', 'leisure', 'music'];
 
-var id_array = ['new', 'tec', 'biz', 'rel', 'spo', 'lei', 'muz']
+var id_array = ['new', 'tec', 'biz', 'rel', 'spo', 'lei', 'muz'];
+
+var replace_letters = ['N', 'T', 'B', 'R', 'S', 'L', 'M'];
+
+var replace_titles = ['News', 'Technology', 'Business', 'Religion', 'Sports', 'Leisure', 'Music'];
 
 //Handles the AJAX calls to the backend
 
@@ -40,8 +44,8 @@ function request(source) {
         data: {target: source},
         async: false,
         success: function(data) {
-          $("#holder").fadeIn('slow');
           $("#holder").html(data);
+          $("#holder").fadeIn('slow');
         }
     });
   };
@@ -126,8 +130,26 @@ $("body").keydown(function(e) {
   }
 });
 
+
+  //Smartphone fix
+$( window ).resize(function() {
+  if (window.innerWidth <= 800) {
+    $("#title").hide();
+    for ( var i=0; i < id_array.length; i++) {
+        $("#" + id_array[i]).empty().html(replace_letters[i]);
+    };
+  };
+
+  if (window.innerWidth > 800){
+    $("#title").fadeIn('fast');
+    for ( var i=0; i < id_array.length; i++) {
+        $("#" + id_array[i]).empty().html(replace_titles[i]);
+    };
+  };
+
+});
+
 //Initialize the default case
-/*
 $(document).ready(function() {
   check = window.location.href.split('#');
   if (typeof check[1] == "undefined"){
@@ -138,11 +160,8 @@ $(document).ready(function() {
     var cur_loc = locations.indexOf(check[1]);
     responder(bundles[cur_loc]);
   }
+
 });
-*/  
-
-
-
 </script>
 </body>
 </html>

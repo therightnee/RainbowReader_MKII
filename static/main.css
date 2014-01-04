@@ -10,7 +10,6 @@ body {
 
 #nav {
   font-family: 'Carrois Gothic', sans-serif;
-  min-width: 1400px;
   height: 80px;
   background: #e74c3c;
   -webkit-box-shadow: -3px 0px 2px 3px #ccc;
@@ -79,6 +78,16 @@ body {
 }
 
 @media all and (max-width: 800px) {
+
+  #nav {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+
   #holder {
     display: -webkit-flex;
     display: flex;
@@ -97,8 +106,11 @@ body {
 }
 
 @media all and (min-width: 801px) {
+  #nav {      
+    min-width: 1400px;
+  }
   
-    .format {
+  .format {
     min-width: 117px;
     max-width: 250px;
   }

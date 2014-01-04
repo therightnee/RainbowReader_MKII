@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, url_for, render_template
 from werkzeug.contrib.cache import SimpleCache 
 from datetime import datetime
-from time import mktime
+from time import mktime, clock
 from tzlocal import get_localzone
 from feed_urls import *
 import feedparser, pytz, os
@@ -32,7 +32,7 @@ def color():
     testing = cache.get(color)
     if testing is None:
         testing = parse(all_links[color])
-        cache.set(color, testing, timeout=10*60)
+        cache.set(color, testing, timeout=15*60)
     return render_template('content.html', parsed=testing)
 
 ##Parse the RSS feeds 
@@ -57,10 +57,12 @@ def parse(links):
 
 ##Use to build the cache using the Scheduler add-on
 
-def reload(group):
-    for link_set in group:
-        rss_data = parse(link_set)
-        cache.set('name', rss_data, timeout=10*60)
+def reload():
+    for link_set in all_links:
+        cur_set = all_links[link_set]
+        tracker = cur_set
+        rel_tmp = parse(cur_set)
+        cache.set(link_set, rel_tmp, timeout=15*60)
 
 ###Start the app here
 
