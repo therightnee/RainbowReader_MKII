@@ -30,7 +30,7 @@ biz_links = list([
     dict(source = "Fast Co", locate = "http://feeds.fastcompany.com/fastcompany/headlines"),
     dict(source = "Bloomberg", locate = "http://www.bloomberg.com/feed/bview/"),
     dict(source = "HBR", locate = "http://feeds.harvardbusiness.org/harvardbusiness?format=xml"),
-    dict(source = "Quartz", locate = "http://feeds.cato.org/CatoHomepageHeadlines"),
+    dict(source = "Quartz", locate = "http://feeds.feedburner.com/qz/AYrF"),
     dict(source = "Pando Daily", locate = "http://pandodaily.com.feedsportal.com/c/35141/f/650422/index.rss"),
     dict(source = "Markets", locate = "http://rssmix.com/u/3844659/rss.xml")
 ])
