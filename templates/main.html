@@ -25,6 +25,15 @@
 </div>
 
 <script src="{{ url_for('static', filename='variables.js')}}"></script>
+<script>
+  //window size check
+  if (window.innerWidth <= 1000) {
+    $("#title").html('RR');
+    for ( var i=0; i < id_array.length; i++) {
+        $("#" + id_array[i]).empty().html(replace_letters[i]);
+    };
+  };
+</script>
 <script src="{{ url_for('static', filename='AJAX.js')}}"></script>
 <script src="{{ url_for('static', filename='bundles.js')}}"></script>
 <script src="{{ url_for('static', filename='navigation.js')}}"></script>

@@ -70,6 +70,7 @@ def reload():
         tracker = cur_set
         rel_tmp = parse(cur_set)
         cache.set(link_set, rel_tmp, timeout=15*60)
+    return "success!"
 
 ###Start the app here
 

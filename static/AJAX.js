@@ -54,8 +54,8 @@ function nav_check(){
   //nav check
     check = window.location.href.split('#');
     if (typeof check[1] == "undefined"){
-      responder(news_bundle);
-      window.location.replace("#news");
+      $("#holder").empty();
+      $("#holder").html("<strong>Cache is loaded.</strong>");
     }
     else {
       var cur_loc = locations.indexOf(check[1]);
