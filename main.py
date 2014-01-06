@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, url_for, render_template
 from datetime import datetime
 from time import mktime, clock
-from tzlocal import get_localzone
+#from tzlocal import get_localzone
 from feed_urls import *
 import feedparser, pytz, os, urlparse, bmemcached, json
 from ast import literal_eval
@@ -55,7 +55,9 @@ def parse(links):
         for item_count in range(0,10):
             try:
                 dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
-                dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(get_localzone())
+                #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
+                dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
+                #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(get_localzone())
                 f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
             except:
                 f_dt = 'A Time Unknown'
