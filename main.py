@@ -63,7 +63,6 @@ def parse(links):
 def reloader():
     group = dict()
     for link_set in all_links:
-        print link_set
         cur_set = all_links[link_set]
         rel_tmp = parse(cur_set)
         group[link_set] = rel_tmp
