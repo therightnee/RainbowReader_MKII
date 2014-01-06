@@ -8,7 +8,7 @@ $( window ).resize(function() {
 
     //This is the return code
     $(window).scroll( function() {
-      if ($(document).scrollTop() >= 250){
+      if ($(document).scrollTop() >= 100){
 
         $("#up").show();
 
@@ -19,16 +19,13 @@ $( window ).resize(function() {
     });
 
       $("#up").click(function() {
-        check = window.location.href.split('#');
-        window.location.replace("#" + check[1]);
-        window.scrollTo(0,0)
+        window.scrollTo(window.innerWidth/2,0)
       });
 
       //Tap return function
 
       $("#up").bind("tapone", function(){
-        check = window.location.href.split('#');
-        window.location.replace("#" + check[1])
+        window.scrollTo(window.innerWidth/2,0)
       });
 
   };
