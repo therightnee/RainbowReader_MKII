@@ -1,7 +1,6 @@
  //Smartphone fix
 $( window ).resize(function() {
   if (window.innerWidth <= 1000) 
-    $("#up").hide();
     $("#title").html('RR');
     for ( var i=0; i < id_array.length; i++) {
         $("#" + id_array[i]).empty().html(replace_letters[i]);
