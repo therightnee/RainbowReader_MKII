@@ -3,10 +3,20 @@ from datetime import datetime
 from time import mktime, clock
 from tzlocal import get_localzone
 from feed_urls import *
-import feedparser, pytz, os
+import feedparser, pytz, os, urlparse, bmemcached, json
 from ast import literal_eval
 
 app = Flask(__name__)
+
+###Initialize connection to cache
+
+try:
+    mc = bmemcached.Client(os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','), os.environ.get('MEMCACHEDCLOUD_USERNAME'), os.environ.get('MEMCACHEDCLOUD_PASSWORD'))
+
+except:
+    mc = bmemcached.Client('pub-memcache-19543.us-east-1-4.2.ec2.garantiadata.com:19543', 'memcached-app20933817', 'VNdVk1NpDX2WYTz5')
+
+
 
 ###Views Code Begins
 
@@ -23,9 +33,7 @@ def index():
 
 @app.route('/build')
 def build():
-    with open("cache.txt", "r") as f:
-        cache = literal_eval(f.read())
-    if cache['muz'] == None:
+    if mc.get('muz') == None:
         reloader()
         return 'build'
     else:
@@ -33,10 +41,8 @@ def build():
 
 @app.route('/color')
 def color():
-    with open("cache.txt", "r") as f:
-        cache = literal_eval(f.read())
     color = request.args.get('target', 'news', type=str)
-    testing = cache[color]
+    testing = mc.get(color)
     return render_template('content.html', parsed=testing)
 
 ##Parse the RSS feeds 
@@ -61,13 +67,10 @@ def parse(links):
 
 ##Use to build the cache 
 def reloader():
-    group = dict()
     for link_set in all_links:
         cur_set = all_links[link_set]
         rel_tmp = parse(cur_set)
-        group[link_set] = rel_tmp
-    with open("cache.txt", "w") as f:
-        f.write(str(group))
+        mc.set(link_set, rel_tmp)
 
 ###Start the app here
 
