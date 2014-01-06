@@ -18,13 +18,13 @@ $( window ).resize(function() {
     });
 
       $("#up").click(function() {
-        $(window).scrollTop();
+        $(window).scrollTop(0);
       });
 
       //Tap return function
 
       $("#up").bind("tapone", function(){
-        $(window).scrollTop();
+        $(window).scrollTop(0);
       });
 
   };
