@@ -48,22 +48,3 @@ $("body").keydown(function(e) {
   window.location.replace("#" + locations[tracker]);
   }
 });
-
-
-  //Smartphone fix
-$( window ).resize(function() {
-  if (window.innerWidth <= 1000) {
-    $("#title").html('RR');
-    for ( var i=0; i < id_array.length; i++) {
-        $("#" + id_array[i]).empty().html(replace_letters[i]);
-    };
-  };
-
-  if (window.innerWidth > 1000){
-    $("#title").html('Rainbow Reader');
-    for ( var i=0; i < id_array.length; i++) {
-        $("#" + id_array[i]).empty().html(replace_titles[i]);
-    };
-  };
-
-});

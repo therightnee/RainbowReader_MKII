@@ -78,6 +78,17 @@ body {
   line-height: 24px;
 }
 
+#up {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 10;
+    font-size: 72px;
+    cursor: pointer;
+}
+
 @media all and (max-width: 1000px) {
 
   #nav {

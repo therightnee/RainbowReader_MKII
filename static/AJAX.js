@@ -64,3 +64,7 @@ function nav_check(){
     }
 
 };
+
+//Refresh the content after 10 minutes
+
+setTimeout(nav_check, 1000 * 60 * 12);
