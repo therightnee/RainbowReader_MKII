@@ -38,6 +38,7 @@ function cache_check() {
           }
           else {
             window.location.replace('/');
+            $("#holder").html("<strong> Please click the title to initialize the cache. </strong>")
           }
 
         }
@@ -54,8 +55,8 @@ function nav_check(){
   //nav check
     check = window.location.href.split('#');
     if (typeof check[1] == "undefined"){
-      $("#holder").empty();
-      $("#holder").html("<strong>Cache is loaded.</strong>");
+      responder(news_bundle);
+      window.location.replace("#news");
     }
     else {
       var cur_loc = locations.indexOf(check[1]);

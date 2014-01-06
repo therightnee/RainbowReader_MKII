@@ -1,16 +1,18 @@
-from flask import Flask, request, redirect, url_for, render_template, g
-from werkzeug.contrib.cache import SimpleCache 
+from flask import Flask, request, redirect, url_for, render_template
 from datetime import datetime
 from time import mktime, clock
 from tzlocal import get_localzone
 from feed_urls import *
 import feedparser, pytz, os
+from ast import literal_eval
+import argparse
 
 app = Flask(__name__)
 
-###initialize Cache
+###Start parser 
 
-cache = SimpleCache()
+parser = argparse.ArgumentParser(description='Allows to call functions using the scheduler')
+parser.add_argument('-r','--build', help='Use this for building the cache', required=False)
 
 ###Views Code Begins
 
@@ -18,7 +20,6 @@ cache = SimpleCache()
 
 all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
     rel = religious_links, spo = sport_links, lei = leisure_links, muz = music_links)
-
 
 @app.route('/')
 def index():
@@ -28,18 +29,20 @@ def index():
 
 @app.route('/build')
 def build():
-    if cache.get('new') == None:
-        reload()
+    with open("cache.txt", "r") as f:
+        cache = literal_eval(f.read())
+    if cache['muz'] == None:
+        reloader()
+        return 'build'
     else:
         return 'cached'
 
 @app.route('/color')
 def color():
+    with open("cache.txt", "r") as f:
+        cache = literal_eval(f.read())
     color = request.args.get('target', 'news', type=str)
-    testing = cache.get(color)
-    if testing is None:
-        testing = parse(all_links[color])
-        cache.set(color, testing, timeout=15*60)
+    testing = cache[color]
     return render_template('content.html', parsed=testing)
 
 ##Parse the RSS feeds 
@@ -47,6 +50,7 @@ def color():
 def parse(links):
     all_items = list()
     for link in links:
+        print link
         d = feedparser.parse(link['locate'])
         parsed_items = list()
         for item_count in range(0,10):
@@ -62,15 +66,19 @@ def parse(links):
         all_items.append(dict(source = link['source'], data = parsed_items))
     return all_items
 
-##Use to build the cache using the Scheduler add-on
-
-def reload():
+##Use to build the cache 
+def reloader():
+    group = dict()
     for link_set in all_links:
+        print link_set
         cur_set = all_links[link_set]
-        tracker = cur_set
         rel_tmp = parse(cur_set)
-        cache.set(link_set, rel_tmp, timeout=15*60)
-    return "success!"
+        group[link_set] = rel_tmp
+    with open("cache.txt", "w") as f:
+        f.write(str(group))
+
+if parser.parse_args().build == 'run':
+    reloader()
 
 ###Start the app here
 
