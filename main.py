@@ -50,7 +50,6 @@ def color():
 def parse(links):
     all_items = list()
     for link in links:
-        print link
         d = feedparser.parse(link['locate'])
         parsed_items = list()
         for item_count in range(0,10):
