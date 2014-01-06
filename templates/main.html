@@ -36,6 +36,11 @@
         $("#" + id_array[i]).empty().html(replace_letters[i]);
     };
   };
+  //Remove #up if needed
+    if (window.innerWidth > 1000){
+    $("#up").hide();
+  };
+
 </script>
 <script src="{{ url_for('static', filename='AJAX.js')}}"></script>
 <script src="{{ url_for('static', filename='bundles.js')}}"></script>

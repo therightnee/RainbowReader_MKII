@@ -5,14 +5,8 @@ from tzlocal import get_localzone
 from feed_urls import *
 import feedparser, pytz, os
 from ast import literal_eval
-import argparse
 
 app = Flask(__name__)
-
-###Start parser 
-
-parser = argparse.ArgumentParser(description='Allows to call functions using the scheduler')
-parser.add_argument('-r','--build', help='Use this for building the cache', required=False)
 
 ###Views Code Begins
 
@@ -69,17 +63,16 @@ def parse(links):
 def reloader():
     group = dict()
     for link_set in all_links:
+        print link_set
         cur_set = all_links[link_set]
         rel_tmp = parse(cur_set)
         group[link_set] = rel_tmp
     with open("cache.txt", "w") as f:
         f.write(str(group))
 
-if parser.parse_args().build == 'run':
-    reloader()
-
 ###Start the app here
 
 if __name__ == '__main__':
      port = int(os.environ.get('PORT', 5000))
      app.run(host='0.0.0.0', port=port, debug=False)
+
