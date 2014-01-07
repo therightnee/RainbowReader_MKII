@@ -56,7 +56,7 @@ leisure_links = list([
     dict(source = "Curbly", locate = "http://feeds.curbly.com/c/35111/f/649129/index.rss"),
     dict(source = "Travel", locate = "http://rssfeeds.usatoday.com/UsatodaycomTravel-TopStories"),
     dict(source = "Kitchn", locate = "http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml"),
-    dict(source = "Culinary", locate = "http://www.rssmix.com/u/3844186/rss.xml"),
+    dict(source = "Culinary", locate = "http://www.rssmix.com/u/3845568/rss.xml"),
     dict(source = "Serious Eats", locate = "http://feeds.feedburner.com/seriouseatsfeaturesvideos")
 ])
 
