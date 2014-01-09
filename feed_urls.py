@@ -15,7 +15,7 @@ news_links = list([
 
 tech_links = list([ 
     dict(source = "Gadgets", locate = "http://rssmix.com/u/3844649/rss.xml"), 
-    dict(source = "Gaming", locate = "http://rssmix.com/u/3844650/rss.xml"),
+    dict(source = "Gaming", locate = "http://rssmix.com/u/3846130/rss.xml"),
     dict(source = "Ars", locate = "http://feeds.arstechnica.com/arstechnica/index"),
     dict(source = "Toms", locate = "http://rssmix.com/u/3844651/rss.xml"),
     dict(source = "Hacker News", locate = "https://news.ycombinator.com/rss"),

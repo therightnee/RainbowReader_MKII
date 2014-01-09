@@ -40,7 +40,7 @@ var technology = {
 		'http://feeds.gawker.com/gizmodo/full'
 		],
 	"Gaming":
-		['http://feeds.feedburner.com/realclearpolitics/qlMj',
+		['http://feeds.gawker.com/kotaku/full',
 		'http://www.joystiq.com/rss.xml'
 		],
 	"Ars": 
