@@ -48,6 +48,7 @@ def color():
 ##Parse the RSS feeds 
 
 def parse(links):
+    counter = 1
     all_items = list()
     for link in links:
         d = feedparser.parse(link['locate'])
@@ -72,6 +73,7 @@ def reloader():
     for link_set in all_links:
         cur_set = all_links[link_set]
         rel_tmp = parse(cur_set)
+        ##Set the memcache
         mc.set(link_set, rel_tmp)
 
 ###Start the app here

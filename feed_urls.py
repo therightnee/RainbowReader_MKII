@@ -17,7 +17,7 @@ tech_links = list([
     dict(source = "Gadgets", locate = "http://rssmix.com/u/3844649/rss.xml"), 
     dict(source = "Gaming", locate = "http://rssmix.com/u/3846130/rss.xml"),
     dict(source = "Ars", locate = "http://feeds.arstechnica.com/arstechnica/index"),
-    dict(source = "Toms", locate = "http://rssmix.com/u/3844651/rss.xml"),
+    dict(source = "Toms", locate = "http://www.tomshardware.com/feeds/rss2/all.xml"),
     dict(source = "Hacker News", locate = "https://news.ycombinator.com/rss"),
     dict(source = "Web Design", locate = "http://rssmix.com/u/3844652/rss.xml"),
     dict(source = "PopSci", locate = "http://feeds.popsci.com/c/34567/f/632419/index.rss"),
