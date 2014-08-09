@@ -5,7 +5,9 @@ from time import mktime, clock
 from feed_urls import *
 import feedparser, pytz, os, urlparse, bmemcached, json
 from ast import literal_eval
-from multiprocessing import Pool
+from multiprocessing.pool import ThreadPool
+import gc
+import timeit
 
 app = Flask(__name__)
 
@@ -35,10 +37,14 @@ def index():
 @app.route('/build')
 def build():
     if mc.get('muz') == None:
-        reloader()
-        return 'build'
+        print "Build completed in %f seconds." % \
+            timeit.timeit(reloader, number=1)
     else:
         return 'cached'
+
+@app.route('/forcebuild')
+def forcebuild():
+    return "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
 
 @app.route('/color')
 def color():
@@ -49,9 +55,12 @@ def color():
 ##Parse the RSS feeds 
 
 def parse(links):
-    pool = Pool(processes=5)
-    pool.map(parse_helper, links)
+    pool = ThreadPool(5)
+    return pool.map(parse_helper, links)
 
+# Spawn a thread for each link
+# TODO In the future, it could be worth combining this somehow with the linkset
+#      to prevent extraneous thread spawns.
 def parse_helper(link):
     d = feedparser.parse(link['locate'])
     parsed_items = list()
@@ -70,12 +79,17 @@ def parse_helper(link):
     return dict(source = link['source'], data = parsed_items)
 
 ##Use to build the cache 
+
+# Spawn a thread for each link set
 def reloader():
-    for link_set in all_links:
-        cur_set = all_links[link_set]
-        rel_tmp = parse(cur_set)
-        ##Set the memcache
-        mc.set(link_set, rel_tmp)
+    pool = ThreadPool(5)
+    pool.map(reloader_helper, all_links)
+
+def reloader_helper(link_set):
+    cur_set = all_links[link_set]
+    rel_tmp = parse(cur_set)
+    ##Set the memcache
+    mc.set(link_set, rel_tmp)
 
 ###Start the app here
 
