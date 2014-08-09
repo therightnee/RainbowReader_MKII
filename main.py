@@ -5,6 +5,7 @@ from time import mktime, clock
 from feed_urls import *
 import feedparser, pytz, os, urlparse, bmemcached, json
 from ast import literal_eval
+from multiprocessing import Pool
 
 app = Flask(__name__)
 
@@ -48,25 +49,25 @@ def color():
 ##Parse the RSS feeds 
 
 def parse(links):
-    counter = 1
-    all_items = list()
-    for link in links:
-        d = feedparser.parse(link['locate'])
-        parsed_items = list()
-        for item_count in range(0,10):
-            try:
-                dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
-                #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
-                dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
-                #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(get_localzone())
-                f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
-            except:
-                f_dt = 'A Time Unknown'
-            f_title = d.entries[item_count].title.split()[:8]
-            tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
-            parsed_items.append(tmp)
-        all_items.append(dict(source = link['source'], data = parsed_items))
-    return all_items
+    pool = Pool(processes=5)
+    pool.map(parse_helper, links)
+
+def parse_helper(link):
+    d = feedparser.parse(link['locate'])
+    parsed_items = list()
+    for item_count in range(0,10):
+        try:
+            dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
+            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
+            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
+            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(get_localzone())
+            f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
+        except:
+            f_dt = 'A Time Unknown'
+        f_title = d.entries[item_count].title.split()[:8]
+        tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
+        parsed_items.append(tmp)
+    return dict(source = link['source'], data = parsed_items)
 
 ##Use to build the cache 
 def reloader():
