@@ -13,14 +13,20 @@ $(".category").on("click tapone", function () {
   responder(bundle_id);
 });
 
-//Keypress response functions
-
+// hashchange response function
+// Note that older browsers may not support window.onhashchange
+$(window).on("hashchange", function () {
+  var cur     = window.location.href.split('#');
+  var tracker = locations.indexOf(cur[1]);
+  responder(id_array[tracker]);
+});
 
 // Because modulus doesn't behave properly over negatives
 function mod(a, b) {
   return ((a % b) + b) % b;
 }
 
+//Keypress response functions
 $("body").keydown(function(e) {
   var cur     = window.location.href.split('#');
   var tracker = locations.indexOf(cur[1]);
