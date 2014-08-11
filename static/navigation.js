@@ -1,50 +1,45 @@
 //Click response function
+var responder = function (bundle_id) {
+  $(".category").removeClass("active");
+  $("#" + bundle_id).addClass("active");
+  $("#holder").hide().empty();
+  $("#nav").removeClass().addClass(bundle_id);
 
-$(".category").click(function() {
-  bundle_loc = id_array.indexOf(this.id);
-  responder(bundles[bundle_loc]);
+  request(bundle_id);
+};
+
+$(".category").on("click tapone", function () {
+  var bundle_id = this.id;
+  responder(bundle_id);
 });
 
-//Tap response function
-
-$(".category").bind("tapone", function(){
-  bundle_loc = id_array.indexOf(this.id);
-  responder(bundles[bundle_loc]);
+// hashchange response function
+// Note that older browsers may not support window.onhashchange
+$(window).on("hashchange", function () {
+  var cur     = window.location.href.split('#');
+  var tracker = locations.indexOf(cur[1]);
+  responder(id_array[tracker]);
 });
+
+// Because modulus doesn't behave properly over negatives
+function mod(a, b) {
+  return ((a % b) + b) % b;
+}
 
 //Keypress response functions
-
-
 $("body").keydown(function(e) {
-
-  var cur = window.location.href.split('#');
-
+  var cur     = window.location.href.split('#');
   var tracker = locations.indexOf(cur[1]);
 
-  if(e.keyCode == 37) { // left
-    if (tracker == 0) {
-      tracker = 6
-    }
-
-    else {
-      tracker -= 1
-    }
-
-  responder(bundles[tracker]);
-  window.location.replace("#" + locations[tracker]);
-
+  if (e.keyCode == 37) { // left
+    tracker--;
+  } else if (e.keyCode == 39) { // right
+    tracker++;
+  } else {
+      return;
   }
-  else if(e.keyCode == 39) { // right
-    $("#holder").empty();
-    if (tracker == 6) {
-      tracker = 0
-    }
 
-    else {
-      tracker += 1
-    }
-
-  responder(bundles[tracker]);
+  tracker = mod(tracker, id_array.length); // wrap around
+  responder(id_array[tracker]);
   window.location.replace("#" + locations[tracker]);
-  }
 });
