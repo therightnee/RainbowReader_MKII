@@ -1,6 +1,6 @@
 var news = {
 	"Google":'http://news.google.com/news?ned=us&topic=h&output=rss', 
-	"RCP":'http://feeds.feedburner.com/realclearpolitics/qlMj',
+	"VOX":'http://www.vox.com/rss/index.xml',
 	"Audit": 
 		['http://factcheck.org/feed/rss/', 
     	'http://www.politifact.com/feeds/articles/truth-o-meter/'],
@@ -39,10 +39,8 @@ var technology = {
 		['http://www.engadget.com/rss.xml', 
 		'http://feeds.gawker.com/gizmodo/full'
 		],
-	"Gaming":
-		['http://feeds.gawker.com/kotaku/full',
-		'http://www.joystiq.com/rss.xml'
-		],
+	"Verge":
+		'http://www.theverge.com/rss/frontpage',
 	"Ars": 
 		'http://feeds.arstechnica.com/arstechnica/index',
  	"Toms": 
