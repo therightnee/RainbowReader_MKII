@@ -5,7 +5,6 @@ from time import mktime, clock
 from feed_urls import *
 import feedparser, pytz, os, urlparse, bmemcached, json
 from ast import literal_eval
-from multiprocessing.pool import ThreadPool
 import gc
 import timeit
 
@@ -26,7 +25,8 @@ except:
 ##Render the basic layout 
 
 all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
-    rel = religious_links, spo = sport_links, lei = leisure_links, muz = music_links)
+    rel = religious_links, spo = sport_links, lei = leisure_links, \
+    muz = music_links)
 
 @app.route('/')
 def index():
@@ -46,23 +46,17 @@ def build():
 def forcebuild():
     return "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
 
+
+###This function is called by the AJAX.js script to render content based on category
 @app.route('/color')
 def color():
-    color = request.args.get('target', 'news', type=str)
-    testing = mc.get(color)
-    return render_template('content.html', parsed=testing)
+    category = request.args.get('target', 'news', type=str)
+    cur_category = mc.get(category)
+    return render_template('content.html', parsed=cur_category)
 
 ##Parse the RSS feeds 
-
-def parse(links):
-    pool = ThreadPool(5)
-    return pool.map(parse_helper, links)
-
-# Spawn a thread for each link
-# TODO In the future, it could be worth combining this somehow with the linkset
-#      to prevent extraneous thread spawns.
-def parse_helper(link):
-    d = feedparser.parse(link['locate'])
+def parser(link):
+    d = feedparser.parse(link.location)
     parsed_items = list()
     for item_count in range(0,10):
         try:
@@ -73,23 +67,36 @@ def parse_helper(link):
             f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
         except:
             f_dt = 'A Time Unknown'
-        f_title = d.entries[item_count].title.split()[:8]
-        tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
+        try:
+            f_title = d.entries[item_count].title.split()[:8]
+            tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
+        except:
+            print link.source
         parsed_items.append(tmp)
-    return dict(source = link['source'], data = parsed_items)
+    return dict(source = link.source, data = parsed_items)
 
 ##Use to build the cache 
 
-# Spawn a thread for each link set
 def reloader():
-    pool = ThreadPool(5)
-    pool.map(reloader_helper, all_links)
+    for link_category in all_links:
+        current_set = all_links[link_category]
+        output_data = list()
+        for object in current_set:
+            output_data.append(parser(object))
+            print(object.source)
+        ##Set the memcache
+        mc.set(link_category, output_data)
+        print link_category + "saved"
 
-def reloader_helper(link_set):
-    cur_set = all_links[link_set]
-    rel_tmp = parse(cur_set)
-    ##Set the memcache
-    mc.set(link_set, rel_tmp)
+def singler(link_set):
+    current_set = all_links[link_set]
+    output_data = list()
+    for object in current_set:
+        output_data.append(parser(object))
+        print(object.source)
+        ##Set the memcache
+    mc.set(link_set, output_data)
+    print link_set + "saved"
 
 ###Start the app here
 

@@ -1,73 +1,117 @@
+'''
+DATA NESTING SCHEME IS AS FOLLOWS
+Complete Link Set -> Category -> Feed
+Category (i.e. news_links, tech_links) is a tuple
+Feed is an object containing the RSS Source (publisher of content) and RSS Feed (URL)
+'''
+##Initialize Objects
+
+class Feed (object):
+
+    def __init__(self, source, location):
+        self.source = source
+        self.location = location
+
+    def __iter__(self):
+    	return self
+
 ###Store all the urls here
+###DO NOT USE A SINGLE DICTIONARY BECAUSE ORDER WILL BE LOST
+###Previous structure was list(dict(), dict()) to maintain order
+###Also to allow search based on a common key 'source' and locate'
+###This was changed tfo a tuple with objects inside that tuple
+###All tuples will be group inside main.py and then processed from there
 
-news_links = list([ 
-    dict(source = "Aggregate", locate = "http://www.rssmix.com/u/3844185/rss.xml"),
-    dict(source = "VOX", locate = "http://www.vox.com/rss/index.xml"),
-    dict(source = "Audit", locate = "http://www.rssmix.com/u/3844183/rss.xml"),
-    dict(source = "CATO", locate = "http://feeds.cato.org/CatoHomepageHeadlines"),
-    dict(source = "CAP", locate = "http://feeds.feedburner.com/americanprogress/ydxq"),
-    dict(source = "Heritage", locate = "http://blog.heritage.org/feed/"),
-    dict(source = "Brookings", locate = "http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"),
-    dict(source = "Quartz", locate = "http://feeds.feedburner.com/qz/AYrF"),
-    dict(source = "International", locate = "http://www.rssmix.com/u/3844186/rss.xml"),
-    dict(source = "538", locate = "http://fivethirtyeight.com/politics/feed/")
-])
+#NEWS LINKS
+#Aggregate - Politico, CSM, AP, Al Jazeera
+n1 = Feed("Aggregate", "http://www.rssmix.com/u/8193107/rss.xml")
+n2 = Feed("VOX","http://www.vox.com/rss/index.xml")
+#Audit - Politifact, FactCheck
+n3 = Feed("Audit","http://www.rssmix.com/u/3844183/rss.xml")
+n4 = Feed("CATO","http://feeds.cato.org/CatoHomepageHeadlines")
+n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
+n6 = Feed("RCP","http://feeds.feedburner.com/realclearpolitics/qlMj")
+n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
+n8 = Feed("Quartz","http://feeds.feedburner.com/qz/AYrF")
+#International - Reuters,Economist 
+n9 = Feed("International","http://www.rssmix.com/u/8193108/rss.xml")
+n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 
-tech_links = list([ 
-    dict(source = "Gadgets", locate = "http://rssmix.com/u/3844649/rss.xml"), 
-    dict(source = "Verge", locate = "http://www.theverge.com/rss/frontpage"),
-    dict(source = "Ars", locate = "http://feeds.arstechnica.com/arstechnica/index"),
-    dict(source = "Toms", locate = "http://www.tomshardware.com/feeds/rss2/all.xml"),
-    dict(source = "Hacker News", locate = "https://news.ycombinator.com/rss"),
-    dict(source = "Web Design", locate = "http://rssmix.com/u/3844652/rss.xml"),
-    dict(source = "PopSci", locate = "http://feeds.popsci.com/c/34567/f/632419/index.rss"),
-    dict(source = "PopMech", locate = "http://rssmix.com/u/3844653/rss.xml"),
-    dict(source = "Fast Co", locate = "http://feeds.fastcompany.com/fastcompany/headlines"),
-    dict(source = "Autos", locate = "http://rssmix.com/u/3844655/rss.xml")   
-])
+news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
 
-biz_links = list([ 
-    dict(source = "Freakonomics", locate = "http://feeds.feedburner.com/freakonomics"), 
-    dict(source = "Wisebread", locate = "http://feeds.killeraces.com/wisebread"), 
-    dict(source = "538", locate = "http://fivethirtyeight.com/economics/feed/"), 
-    dict(source = "Bloomberg", locate = "http://www.bloomberg.com/feed/bview/"),
-    dict(source = "HBR", locate = "http://feeds.harvardbusiness.org/harvardbusiness?fohttp://feeds.killeraces.com/wisebreadrmat=xml"),
-    dict(source = "Pando Daily", locate = "http://pandodaily.com.feedsportal.com/c/35141/f/650422/index.rss"),
-    dict(source = "Business Insider", locate = "http://www.businessinsider.com/rss")
-])
+#TECH LINKS
+#Gadgets - Gizmodo, Engadget
+t1 = Feed("Gadgets", "http://rssmix.com/u/3844649/rss.xml")
+t2 = Feed("Verge","http://www.theverge.com/rss/frontpage")
+t3 = Feed("Ars","http://feeds.arstechnica.com/arstechnica/index")
+t4 = Feed("Toms","http://www.tomshardware.com/feeds/rss2/all.xml")
+t5 = Feed("Hacker News","https://news.ycombinator.com/rss")
+#Web Design - CSS Tricks, Smashing Mag, Vandelay, Web Design Tuts+
+t6 = Feed("Web Design","http://rssmix.com/u/3844652/rss.xml")
+t7 = Feed("Earth ","http://www.earth.columbia.edu/rss/research")
+t8 = Feed("Fast Co","http://feeds.fastcompany.com/fastcompany/headlines")
+t9 = Feed("Core 77", "http://feeds.feedburner.com/core77/blog" )
 
-religious_links = list([ 
-    dict(source = "GCC", locate = "http://feeds.feedburner.com/tgcblog"), 
-    dict(source = "Boundless", locate = "http://feeds.feedburner.com/boundlessline/blog?format=xml"),
-    dict(source = "Biologos", locate = "http://biologos.org/feed/custom/rf_V2?search_method=or&tags-topics=&tags-format=&sort_by=newest"),
-    dict(source = "CT", locate = "http://feeds.christianitytoday.com/christianitytoday/ctmag/")
-])
+tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 
-sport_links = list([ 
-    dict(source = "ESPN", locate = "http://sports.espn.go.com/espn/rss/news"), 
-    dict(source = "Deadspin", locate = "http://feeds.gawker.com/deadspin/full"),
-    dict(source = "538", locate = "http://fivethirtyeight.com/sports/feed/"),
-    dict(source = "Great Goals", locate = "http://www.101greatgoals.com/feed/"),
-    dict(source = "FBS", locate = "http://feeds.feedburner.com/fbschedulescom?format=xml")
-])
+#BUSINESS LINKS
+b1 = Feed("Forbes","http://www.forbes.com/most-popular/feed/")
+b2 = Feed("Wisebread","http://feeds.killeraces.com/wisebread")
+b3 = Feed("538","http://fivethirtyeight.com/economics/feed/")
+b4 = Feed("Fi Post","http://business.financialpost.com/category/investing/feed")
+b5 = Feed("HBR","http://feeds.harvardbusiness.org/harvardbusiness?fo")
+b6 = Feed("1RR","http://feeds.feedburner.com/americanprogress/ydxq")
+b7 = Feed("Business Insider","http://www.businessinsider.com/rss")
+b8 = Feed("Inc.com","http://feeds.inc.com/home/updates")
+b9 = Feed("FiTi", "http://seekingalpha.com/listing/most-popular-articles.xml")
+b10 = Feed("Alpha", "http://seekingalpha.com/listing/most-popular-articles.xml")
 
-leisure_links = list([ 
-    dict(source = "Lifehacker", locate = "http://feeds.gawker.com/lifehacker/full"), 
-    dict(source = "DIY", locate = "http://rssmix.com/u/3844663/rss.xml"),
-    dict(source = "AoM", locate = "http://feeds.feedburner.com/TheArtOfManliness?format=xml"),
-    dict(source = "Curbly", locate = "http://feeds.curbly.com/c/35111/f/649129/index.rss"),
-    dict(source = "Travel", locate = "http://rssfeeds.usatoday.com/UsatodaycomTravel-TopStories"),
-    dict(source = "Kitchn", locate = "http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml"),
-    dict(source = "Culinary", locate = "http://www.rssmix.com/u/3845568/rss.xml"),
-    dict(source = "Serious Eats", locate = "http://feeds.feedburner.com/seriouseatsfeaturesvideos")
-])
+biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
 
-music_links = list([ 
-    dict(source = "FNT", locate = "http://feeds.feedburner.com/freshnewtracks/iyTb"),
-    dict(source = "Your EDM", locate = "http://www.youredm.com/free-download/feed/"),
-    dict(source = "DA", locate = "http://dancingastronaut.com/music/download/feed/"),
-    dict(source = "Earmilk", locate = "http://feeds2.feedburner.com/earmilk"),
-    dict(source = "GVB", locate = "http://www.gorillavsbear.net/feed/"),
-    dict(source = "Hype Machine", locate = "http://hypem.com/feed/popular/3day/1/feed.xml"),
-    dict(source = "Pitchfork", locate = "http://rssmix.com/u/3844657/rss.xml")
-])
+#RELIGIOUS LINKS
+r1 = Feed("GCC", "http://feeds.feedburner.com/tgcblog")
+r2 = Feed("Boundless","http://feeds.feedburner.com/boundlessline/blog?format=xml")
+r3 = Feed("Biologos","http://biologos.org/blogs/feed")
+r4 = Feed("TGA","http://feeds.feedburner.com/TheGodArticle")
+r5 = Feed("UT","http://feeds.feedburner.com/UnsystematicTheology")
+r6 = Feed("UP","http://feeds.feedburner.com/TheGodArticle")
+r7 = Feed("DG", "http://feeds.feedburner.com/TheGodArticle")
+
+religious_links = (r1,r2,r3,r4,r5,r6,r7)
+
+#SPORTS LINKS
+s1 = Feed("ESPN", "http://sports.espn.go.com/espn/rss/news")
+s2 = Feed("Deadspin","http://feeds.gawker.com/deadspin/full")
+s3 = Feed("538","http://fivethirtyeight.com/sports/feed/")
+s4 = Feed("Great Goals","http://www.101greatgoals.com/feed/")
+s5 = Feed("FBS","http://feeds.feedburner.com/fbschedulescom?format=xml")
+s6 = Feed("RCS","http://www.realclearsports.com/index.xml")
+
+sport_links = (s1,s2,s3,s4,s5,s6)
+
+#LEISURE LINKS
+#Autos - Jalopnik, Autoblog, TTAC
+l1 = Feed("Autos","http://www.rssmix.com/u/8193109/rss.xml")
+#DIY - MAKE, Hack-a-day
+l2 = Feed("DIY","http://rssmix.com/u/3844663/rss.xml")
+l3 = Feed("Lifehacker","http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml")
+l4 = Feed("Curbly","http://feeds.curbly.com/c/35111/f/649129/index.rss")
+#Travel - Eat Your World, Out of Town, View from the Wing
+l5 = Feed("Travel","http://www.rssmix.com/u/8193110/rss.xml")
+l6 = Feed("Kitchn","http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml")
+#Culinary - Smitten Kitchen, Bright Eyed Baker
+l7 = Feed("Culinary","http://www.rssmix.com/u/3845568/rss.xml")
+l8 = Feed("Serious Eats","http://feeds.feedburner.com/seriouseatsfeaturesvideos")
+
+leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)
+
+#MUSIC LINKS
+m1 = Feed("EMPT", "http://www.etmusiquepourtous.com/feed/")
+m2 = Feed("FNT","http://feeds.feedburner.com/freshnewtracks/iyTb")
+m3 = Feed("Your EDM","http://www.youredm.com/free-download/feed/")
+m4 = Feed("DA","http://dancingastronaut.com/music/download/feed/")
+m5 = Feed("Earmilk","http://feeds2.feedburner.com/earmilk")
+m6 = Feed("GVB","http://www.gorillavsbear.net/feed/")
+m7 = Feed("Hype Machine","http://hypem.com/feed/popular/3day/1/feed.xml")
+
+music_links = (m1,m2,m3,m4,m5,m6,m7)
