@@ -13,7 +13,7 @@ app = Flask(__name__)
 ###Initialize connection to cache
 
 try:
-    mc = bmemcached.Client(os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','), os.environ.get('MEMCACHEDCLOUD_USERNAME').encode('utf-8'), os.environ.get('MEMCACHEDCLOUD_PASSWORD').encode('utf-8'))
+    mc = bmemcached.Client(os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','), os.environ.get('MEMCACHEDCLOUD_USERNAME'), os.environ.get('MEMCACHEDCLOUD_PASSWORD'))
 
 except:
     print("local")
