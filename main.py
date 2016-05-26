@@ -3,7 +3,7 @@ from datetime import datetime
 from time import mktime, clock
 #from tzlocal import get_localzone
 from feed_urls import *
-import feedparser, pytz, os, urllib.parse, bmemcached
+import feedparser, pytz, os, urllib.parse
 from ast import literal_eval
 import gc
 import timeit
@@ -11,12 +11,31 @@ import timeit
 app = Flask(__name__)
 
 ###Initialize connection to cache
+import pylibmc
 
-try:
-    mc = bmemcached.Client(os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','), os.environ.get('MEMCACHEDCLOUD_USERNAME'), os.environ.get('MEMCACHEDCLOUD_PASSWORD'))
+servers = os.environ.get('MEMCACHIER_SERVERS', '').split(',')
+user = os.environ.get('MEMCACHIER_USERNAME', '')
+pass_key = os.environ.get('MEMCACHIER_PASSWORD', '')
 
-except:
-    print("local")
+mc = pylibmc.Client(servers, binary=True,
+                    username=user, password=pass_key,
+                    behaviors={
+                      # Faster IO
+                      "tcp_nodelay": True,
+                      "no_block": True,
+
+                      # Timeout for set/get requests
+                      "_poll_timeout": 2000,
+
+                      # Use consistent hashing for failover
+                      "ketama": True,
+
+                      # Configure failover timings
+                      "connect_timeout": 2000,
+                      "remove_failed": 4,
+                      "retry_timeout": 2,
+                      "dead_timeout": 10,
+                    })
 
 ###Views Code Begins
 
