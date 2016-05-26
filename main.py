@@ -3,7 +3,7 @@ from datetime import datetime
 from time import mktime, clock
 #from tzlocal import get_localzone
 from feed_urls import *
-import feedparser, pytz, os, urllib.parse, bmemcached, json
+import feedparser, pytz, os, urllib.parse, bmemcached
 from ast import literal_eval
 import gc
 import timeit
@@ -16,9 +16,7 @@ try:
     mc = bmemcached.Client(os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','), os.environ.get('MEMCACHEDCLOUD_USERNAME'), os.environ.get('MEMCACHEDCLOUD_PASSWORD'))
 
 except:
-    mc = bmemcached.Client('pub-memcache-19543.us-east-1-4.2.ec2.garantiadata.com:19543', 'memcached-app20933817', 'VNdVk1NpDX2WYTz5')
-
-
+    print("local")
 
 ###Views Code Begins
 

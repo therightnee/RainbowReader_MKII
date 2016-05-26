@@ -63,7 +63,7 @@ b5 = Feed("HBR","http://feeds.harvardbusiness.org/harvardbusiness?fo")
 b6 = Feed("1RR","http://feeds.feedburner.com/americanprogress/ydxq")
 b7 = Feed("Business Insider","http://www.businessinsider.com/rss")
 b8 = Feed("Inc.com","http://feeds.inc.com/home/updates")
-b9 = Feed("FiTi", "http://seekingalpha.com/listing/most-popular-articles.xml")
+b9 = Feed("FiTi", "http://business.financialpost.com/category/news/economy/feed")
 b10 = Feed("Alpha", "http://seekingalpha.com/listing/most-popular-articles.xml")
 
 biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
