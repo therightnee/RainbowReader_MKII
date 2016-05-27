@@ -74,8 +74,8 @@ r2 = Feed("Boundless","http://feeds.feedburner.com/boundlessline/blog?format=xml
 r3 = Feed("Biologos","http://biologos.org/blogs/feed")
 r4 = Feed("TGA","http://feeds.feedburner.com/TheGodArticle")
 r5 = Feed("UT","http://feeds.feedburner.com/UnsystematicTheology")
-r6 = Feed("UP","http://feeds.feedburner.com/TheGodArticle")
-r7 = Feed("DG", "http://feeds.feedburner.com/TheGodArticle")
+r6 = Feed("UP","http://feeds.feedburner.com/UnfundamentalistParenting")
+r7 = Feed("DG", "http://rss.desiringgod.org/")
 
 religious_links = (r1,r2,r3,r4,r5,r6,r7)
 
@@ -94,7 +94,7 @@ sport_links = (s1,s2,s3,s4,s5,s6)
 l1 = Feed("Autos","http://www.rssmix.com/u/8193109/rss.xml")
 #DIY - MAKE, Hack-a-day
 l2 = Feed("DIY","http://rssmix.com/u/3844663/rss.xml")
-l3 = Feed("Lifehacker","http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml")
+l3 = Feed("Lifehacker","http://feeds.gawker.com/lifehacker/full#_ga=1.188949803.1289611229.1464145212")
 l4 = Feed("Curbly","http://feeds.curbly.com/c/35111/f/649129/index.rss")
 #Travel - Eat Your World, Out of Town, View from the Wing
 l5 = Feed("Travel","http://www.rssmix.com/u/8193110/rss.xml")
