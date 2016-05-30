@@ -73,11 +73,10 @@ r1 = Feed("GCC", "http://feeds.feedburner.com/tgcblog")
 r2 = Feed("Boundless","http://feeds.feedburner.com/boundlessline/blog?format=xml")
 r3 = Feed("Biologos","http://biologos.org/blogs/feed")
 r4 = Feed("TGA","http://feeds.feedburner.com/TheGodArticle")
-r5 = Feed("UT","http://feeds.feedburner.com/UnsystematicTheology")
-r6 = Feed("UP","http://feeds.feedburner.com/UnfundamentalistParenting")
-r7 = Feed("DG", "http://rss.desiringgod.org/")
+r5 = Feed("CT","http://feeds.christianitytoday.com/christianitytoday/ctmag/")
+r6 = Feed("Desiring", "http://rss.desiringgod.org/")
 
-religious_links = (r1,r2,r3,r4,r5,r6,r7)
+religious_links = (r1,r2,r3,r4,r5,r6)
 
 #SPORTS LINKS
 s1 = Feed("ESPN", "http://sports.espn.go.com/espn/rss/news")
