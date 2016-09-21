@@ -48,7 +48,7 @@ t4 = Feed("Toms","http://www.tomshardware.com/feeds/rss2/all.xml")
 t5 = Feed("Hacker News","https://news.ycombinator.com/rss")
 #Web Design - CSS Tricks, Smashing Mag, Vandelay, Web Design Tuts+
 t6 = Feed("Web Design","http://rssmix.com/u/3844652/rss.xml")
-t7 = Feed("Earth ","http://www.earth.columbia.edu/rss/research")
+t7 = Feed("GTM ","http://www.greentechmedia.com/feed")
 t8 = Feed("Fast Co","http://feeds.fastcompany.com/fastcompany/headlines")
 t9 = Feed("Core 77", "http://feeds.feedburner.com/core77/blog" )
 
