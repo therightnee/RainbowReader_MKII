@@ -23,18 +23,20 @@ class Feed (object):
 ###All tuples will be group inside main.py and then processed from there
 
 #NEWS LINKS
-#Aggregate - Politico, CSM, AP, Al Jazeera
-n1 = Feed("Aggregate", "http://www.rssmix.com/u/8193107/rss.xml")
-n2 = Feed("VOX","http://www.vox.com/rss/index.xml")
+#CSM
+n1 = Feed("CSM", "http://rss.csmonitor.com/feeds/csm")
+#Aggregate - VOX, Quartz
+n2 = Feed("Aggregate","http://rssmix.com/u/8207097/rss.xml")
 #Audit - Politifact, FactCheck
 n3 = Feed("Audit","http://www.rssmix.com/u/3844183/rss.xml")
 n4 = Feed("CATO","http://feeds.cato.org/CatoHomepageHeadlines")
 n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
-n6 = Feed("RCP","http://feeds.feedburner.com/realclearpolitics/qlMj")
+#Politico
+n6 = Feed("Politico","http://feeds.feedburner.com/realclearpolitics/qlMj")
 n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
-n8 = Feed("Quartz","http://feeds.feedburner.com/qz/AYrF")
-#International - Reuters,Economist 
-n9 = Feed("International","http://www.rssmix.com/u/8193108/rss.xml")
+n8 = Feed("AP","http://hosted2.ap.org/atom/APDEFAULT/3d281c11a96b4ad082fe88aa0db04305")
+#International - Reuters,BBC 
+n9 = Feed("International","http://rssmix.com/u/8207098/rss.xml")
 n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 
 news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
