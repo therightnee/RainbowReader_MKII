@@ -32,7 +32,7 @@ n3 = Feed("Audit","http://www.rssmix.com/u/3844183/rss.xml")
 n4 = Feed("CATO","http://feeds.cato.org/CatoHomepageHeadlines")
 n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
 #Politico
-n6 = Feed("Politico","http://feeds.feedburner.com/realclearpolitics/qlMj")
+n6 = Feed("RCP","http://feeds.feedburner.com/realclearpolitics/qlMj")
 n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
 n8 = Feed("AP","http://hosted2.ap.org/atom/APDEFAULT/3d281c11a96b4ad082fe88aa0db04305")
 #International - Reuters,BBC 
@@ -50,7 +50,7 @@ t4 = Feed("Toms","http://www.tomshardware.com/feeds/rss2/all.xml")
 t5 = Feed("Hacker News","https://news.ycombinator.com/rss")
 #Web Design - CSS Tricks, Smashing Mag, Vandelay, Web Design Tuts+
 t6 = Feed("Web Design","http://rssmix.com/u/3844652/rss.xml")
-t7 = Feed("GTM ","http://www.greentechmedia.com/feed")
+t7 = Feed("GTM ","http://feeds.greentechmedia.com/GreentechMedia")
 t8 = Feed("Fast Co","http://feeds.fastcompany.com/fastcompany/headlines")
 t9 = Feed("Core 77", "http://feeds.feedburner.com/core77/blog" )
 
