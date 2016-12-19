@@ -67,7 +67,7 @@ b7 = Feed("Inc.com","http://feeds.inc.com/home/updates")
 b8 = Feed("FiTi", "http://business.financialpost.com/category/news/economy/feed")
 b9 = Feed("Alpha", "http://seekingalpha.com/listing/most-popular-articles.xml")
 
-biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
+biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9)
 
 #RELIGIOUS LINKS
 r1 = Feed("GCC", "http://feeds.feedburner.com/tgcblog")
