@@ -99,8 +99,11 @@ def reloader():
         current_set = all_links[link_category]
         output_data = list()
         for object in current_set:
+          try:
             output_data.append(parser(object))
             print((object.source))
+          except:
+            print(object.source + "failed")
         ##Set the memcache
         mc.set(link_category, output_data)
         print(link_category + "saved")

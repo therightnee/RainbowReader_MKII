@@ -112,6 +112,6 @@ m3 = Feed("Your EDM","http://www.youredm.com/free-download/feed/")
 m4 = Feed("DA","http://www.dancingastronaut.com/music/feed/")
 m5 = Feed("Earmilk","http://feeds2.feedburner.com/earmilk")
 m6 = Feed("TSiS","http://thissongissick.com/feeds/feed")
-m7 = Feed("Hype Machine","http://hypem.com/feed/popular/3day/1/feed.xml")
+m7 = Feed("EDM Sauce","https://www.edmsauce.com/feed/")
 
 music_links = (m1,m2,m3,m4,m5,m6,m7)
