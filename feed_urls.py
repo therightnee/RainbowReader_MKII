@@ -57,9 +57,10 @@ t9 = Feed("Core 77", "http://feeds.feedburner.com/core77/blog" )
 tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 
 #BUSINESS LINKS
-b1 = Feed("Forbes","http://www.forbes.com/most-popular/feed/")
+b1 = Feed("TC","http://feeds.feedburner.com/TechCrunch/")
 b2 = Feed("Wisebread","http://feeds.killeraces.com/wisebread")
-b3 = Feed("538","http://fivethirtyeight.com/economics/feed/")
+#Crypto - Coindesk, CoinTelegraph
+b3 = Feed("Crypto","http://www.rssmix.com/u/8264685/rss.xml")
 b4 = Feed("Economist","http://www.economist.com/sections/business-finance/rss.xml")
 b5 = Feed("HBR","http://feeds.harvardbusiness.org/harvardbusiness?fo")
 b6 = Feed("Business Insider","http://www.businessinsider.com/rss")
@@ -73,11 +74,10 @@ biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9)
 r1 = Feed("GCC", "http://feeds.feedburner.com/tgcblog")
 r2 = Feed("Boundless","http://feeds.feedburner.com/boundlessline/blog?format=xml")
 r3 = Feed("Biologos","http://biologos.org/blogs/feed")
-r4 = Feed("TGA","http://feeds.feedburner.com/TheGodArticle")
-r5 = Feed("CT","http://feeds.christianitytoday.com/christianitytoday/ctmag/")
-r6 = Feed("Desiring", "http://rss.desiringgod.org/")
+r4 = Feed("CT","http://feeds.christianitytoday.com/christianitytoday/ctmag/")
+r5 = Feed("Desiring", "http://rss.desiringgod.org/")
 
-religious_links = (r1,r2,r3,r4,r5,r6)
+religious_links = (r1,r2,r3,r4,r5)
 
 #SPORTS LINKS
 s1 = Feed("ESPN", "http://sports.espn.go.com/espn/rss/news")
