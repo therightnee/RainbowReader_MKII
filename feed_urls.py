@@ -42,8 +42,7 @@ n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
 
 #TECH LINKS
-#Gadgets - Gizmodo, Engadget
-t1 = Feed("Gadgets", "http://rssmix.com/u/3844649/rss.xml")
+t1 = Feed("Engadget", "https://www.engadget.com/rss.xml")
 t2 = Feed("Verge","http://www.theverge.com/rss/frontpage")
 t3 = Feed("Ars","http://feeds.arstechnica.com/arstechnica/index")
 t4 = Feed("Toms","http://www.tomshardware.com/feeds/rss2/all.xml")
@@ -81,7 +80,7 @@ religious_links = (r1,r2,r3,r4,r5)
 
 #SPORTS LINKS
 s1 = Feed("ESPN", "http://sports.espn.go.com/espn/rss/news")
-s2 = Feed("Deadspin","http://feeds.gawker.com/deadspin/full")
+s2 = Feed("Deadspin","https://deadspin.com/rss")
 s3 = Feed("538","http://fivethirtyeight.com/sports/feed/")
 s4 = Feed("Great Goals","http://www.101greatgoals.com/feed/")
 s5 = Feed("FBS","http://feeds.feedburner.com/fbschedulescom?format=xml")
@@ -90,11 +89,12 @@ s6 = Feed("RCS","http://www.realclearsports.com/index.xml")
 sport_links = (s1,s2,s3,s4,s5,s6)
 
 #LEISURE LINKS
-#Autos - Jalopnik, Autoblog, TTAC
-l1 = Feed("Autos","http://www.rssmix.com/u/8193109/rss.xml")
+#Autos - Autoblog, TTAC
+l1 = Feed("Autos","http://www.rssmix.com/u/8264704/rss.xml")
 #DIY - MAKE, Hack-a-day
 l2 = Feed("DIY","http://rssmix.com/u/3844663/rss.xml")
-l3 = Feed("Lifehacker","http://feeds.gawker.com/lifehacker/full#_ga=1.188949803.1289611229.1464145212")
+#SF Focus - SF Eater, 7x7
+l3 = Feed("SF","http://www.rssmix.com/u/8264703/rss.xml")
 l4 = Feed("Curbly","https://www.curbly.com/site_index.rss")
 #Travel - Eat Your World, Out of Town, View from the Wing
 l5 = Feed("Travel","http://www.rssmix.com/u/8193110/rss.xml")

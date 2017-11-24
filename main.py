@@ -103,10 +103,10 @@ def reloader():
             output_data.append(parser(object))
             print((object.source))
           except:
-            print(object.source + "failed")
+            print(object.source + " failed")
         ##Set the memcache
         mc.set(link_category, output_data)
-        print(link_category + "saved")
+        print(link_category + " saved")
 
 def singler(link_set):
     current_set = all_links[link_set]
