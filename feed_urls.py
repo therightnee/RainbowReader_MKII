@@ -95,7 +95,7 @@ l1 = Feed("Autos","http://www.rssmix.com/u/8193109/rss.xml")
 #DIY - MAKE, Hack-a-day
 l2 = Feed("DIY","http://rssmix.com/u/3844663/rss.xml")
 l3 = Feed("Lifehacker","http://feeds.gawker.com/lifehacker/full#_ga=1.188949803.1289611229.1464145212")
-l4 = Feed("Curbly","http://feeds.curbly.com/c/35111/f/649129/index.rss")
+l4 = Feed("Curbly","https://www.curbly.com/site_index.rss")
 #Travel - Eat Your World, Out of Town, View from the Wing
 l5 = Feed("Travel","http://www.rssmix.com/u/8193110/rss.xml")
 l6 = Feed("Kitchn","http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml")
