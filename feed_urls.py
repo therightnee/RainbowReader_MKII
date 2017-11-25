@@ -29,7 +29,7 @@ n1 = Feed("CSM", "http://rss.csmonitor.com/feeds/csm")
 n2 = Feed("Aggregate","http://rssmix.com/u/8207097/rss.xml")
 #Audit - Politifact, FactCheck
 n3 = Feed("Audit","http://www.rssmix.com/u/3844183/rss.xml")
-n4 = Feed("CATO","http://feeds.cato.org/CatoHomepageHeadlines")
+n4 = Feed("CATO","https://www.cato.org/rss/homepage-headlines")
 n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
 #Politico
 n6 = Feed("AJ","http://www.aljazeera.com/xml/rss/all.xml")
