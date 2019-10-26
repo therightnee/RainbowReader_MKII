@@ -23,20 +23,25 @@ class Feed (object):
 ###All tuples will be group inside main.py and then processed from there
 
 #NEWS LINKS
-#CSM
-n1 = Feed("CSM", "http://rss.csmonitor.com/feeds/csm")
+#Politico Congress
+n1 = Feed("PC", "https://www.politico.com/rss/congress.xml")
 #Aggregate - VOX, Quartz
 n2 = Feed("Aggregate","http://rssmix.com/u/8207097/rss.xml")
 #Audit - Politifact, FactCheck
 n3 = Feed("Audit","http://www.rssmix.com/u/3844183/rss.xml")
+#Libertarian Thinktank
 n4 = Feed("CATO","https://www.cato.org/rss/recent-opeds")
+#Left Thinktank
 n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
-#Politico
+#Aljazeera
 n6 = Feed("AJ","http://www.aljazeera.com/xml/rss/all.xml")
+#Center Left Thinktank
 n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
+#Syndicated Feed
 n8 = Feed("AP","http://hosted.ap.org/lineups/TOPHEADS.rss?SITE=AP&SECTION=HOME")
-#International - Reuters,BBC 
-n9 = Feed("International","http://rssmix.com/u/8207098/rss.xml")
+#International - Reuters World, BBC, The News Lens, RFI Apprendre 
+n9 = Feed("International","http://www.rssmix.com/u/9648454/rss.xml")
+#538 Political Analysis
 n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 
 news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
