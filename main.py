@@ -7,36 +7,39 @@ import feedparser, pytz, os, urllib.parse
 from ast import literal_eval
 import gc
 import timeit
-
-app = Flask(__name__)
-
-###Initialize connection to cache
 import pylibmc
 
-servers = os.environ.get('MEMCACHIER_SERVERS', '').split(',')
-user = os.environ.get('MEMCACHIER_USERNAME', '')
-pass_key = os.environ.get('MEMCACHIER_PASSWORD', '')
+mc = Cache()
+app = Flask(__name__)
 
-mc = pylibmc.Client(servers, binary=True,
-                    username=user, password=pass_key,
-                    behaviors={
-                      # Faster IO
-                      "tcp_nodelay": True,
-                      "no_block": True,
 
-                      # Timeout for set/get requests
-                      "_poll_timeout": 2000,
-
-                      # Use consistent hashing for failover
-                      "ketama": True,
-
-                      # Configure failover timings
-                      "connect_timeout": 2000,
-                      "remove_failed": 4,
-                      "retry_timeout": 2,
-                      "dead_timeout": 10,
-                    })
-
+cache_servers = os.environ.get('MEMCACHIER_SERVERS')
+if cache_servers == None:
+    # Fall back to simple in memory cache (development)
+    mc.init_app(app, config={'CACHE_TYPE': 'simple'})
+else:
+    cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
+    cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
+    mc.init_app(app,
+        config={'CACHE_TYPE': 'saslmemcached',
+                'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
+                'CACHE_MEMCACHED_USERNAME': cache_user,
+                'CACHE_MEMCACHED_PASSWORD': cache_pass,
+                'CACHE_OPTIONS': { 'behaviors': {
+                    # Faster IO
+                    'tcp_nodelay': True,
+                    # Keep connection alive
+                    'tcp_keepalive': True,
+                    # Timeout for set/get requests
+                    'connect_timeout': 2000, # ms
+                    'send_timeout': 750 * 1000, # us
+                    'receive_timeout': 750 * 1000, # us
+                    '_poll_timeout': 2000, # ms
+                    # Better failover
+                    'ketama': True,
+                    'remove_failed': 1,
+                    'retry_timeout': 2,
+                    'dead_timeout': 30}}})
 ###Views Code Begins
 
 ##Render the basic layout 
