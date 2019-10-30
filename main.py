@@ -8,6 +8,7 @@ from ast import literal_eval
 import gc
 import timeit
 import pylibmc
+from flask_caching import Cache
 
 mc = Cache()
 app = Flask(__name__)
