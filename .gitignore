@@ -2,3 +2,5 @@
 *.swp
 #ignore venv folder
 venv/
+#ignore environment variables for Heroku
+.env
