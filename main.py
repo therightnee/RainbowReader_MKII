@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for, render_template
 from datetime import datetime
-from time import mktime, clock
+from time import mktime
 #from tzlocal import get_localzone
 from feed_urls import *
 import feedparser, pytz, os, urllib.parse
