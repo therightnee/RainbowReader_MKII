@@ -23,8 +23,8 @@ class Feed (object):
 ###All tuples will be group inside main.py and then processed from there
 
 #NEWS LINKS
-#Politico Congress
-n1 = Feed("PC", "https://www.politico.com/rss/congress.xml")
+#News Lens
+n1 = Feed("關鍵評論網", "https://feeds.feedburner.com/TheNewsLens")
 #Aggregate - VOX, Quartz
 n2 = Feed("Aggregate","http://rssmix.com/u/8207097/rss.xml")
 #Audit - Politifact, FactCheck
@@ -39,8 +39,8 @@ n6 = Feed("AJ","http://www.aljazeera.com/xml/rss/all.xml")
 n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
 #English World - Reuters World, BBC
 n8 = Feed("English World","https://feed.rssunify.com/5dbdad68b12e0/rss.xml")
-#World - The News Lens, RFI Apprendre 
-n9 = Feed("International","https://feed.rssunify.com/5dbdad31b205b/rss.xmll")
+#RFI Appredndre
+n9 = Feed("RFI","https://savoirs.rfi.fr/fr/apprendre-perfectionner-le-francais/rss")
 #538 Political Analysis
 n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 
