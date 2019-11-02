@@ -9,10 +9,14 @@ import gc
 import timeit
 import pylibmc
 from flask_caching import Cache
+from flask_sslify import SSLify
+
 
 mc = Cache()
 app = Flask(__name__)
 
+if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
+    sslify = SSLify(app)
 
 cache_servers = os.environ.get('MEMCACHIER_SERVERS')
 if cache_servers == None:

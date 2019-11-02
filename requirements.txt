@@ -1,6 +1,7 @@
 Click==7.0
 Flask==1.1.1
 Flask-Caching==1.7.2
+Flask-SSLify==0.1.5
 itsdangerous==0.24
 Jinja2==2.10.3
 MarkupSafe==0.23
