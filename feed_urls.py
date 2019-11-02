@@ -37,10 +37,10 @@ n5 = Feed("CAP","http://feeds.feedburner.com/americanprogress/ydxq")
 n6 = Feed("AJ","http://www.aljazeera.com/xml/rss/all.xml")
 #Center Left Thinktank
 n7 = Feed("Brookings","http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml")
-#Syndicated Feed
-n8 = Feed("AP","http://hosted.ap.org/lineups/TOPHEADS.rss?SITE=AP&SECTION=HOME")
-#International - Reuters World, BBC, The News Lens, RFI Apprendre 
-n9 = Feed("International","http://www.rssmix.com/u/9648454/rss.xml")
+#English World - Reuters World, BBC
+n8 = Feed("English World","https://feed.rssunify.com/5dbdad68b12e0/rss.xml")
+#World - The News Lens, RFI Apprendre 
+n9 = Feed("International","https://feed.rssunify.com/5dbdad31b205b/rss.xmll")
 #538 Political Analysis
 n10 = Feed("538","http://fivethirtyeight.com/politics/feed/")
 
