@@ -65,6 +65,6 @@ function nav_check(){
 
 };
 
-//Refresh the content after 12 minutes
+//Refresh the content after 15 minutes
 
-setInterval(nav_check, 1000 * 60 * 12);
+setInterval(nav_check, 1000 * 60 * 15);
