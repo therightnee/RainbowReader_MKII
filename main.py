@@ -61,7 +61,8 @@ def build():
     if mc.get('muz') == None:
         #print("Build completed in %f seconds." % \
         #    timeit.timeit(reloader, number=1))
-        return  "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
+        timer_str = "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
+        return timer_str
     else:
         return 'cached'
 
