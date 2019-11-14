@@ -61,15 +61,11 @@ def build():
     if mc.get('muz') == None:
         #print("Build completed in %f seconds." % \
         #    timeit.timeit(reloader, number=1))
-        timer_str = "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
-        return timer_str
+        #timer_str = "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
+        reloader()
+        return render_template('build_wait.html', pass_through = {"msg": "Currently building, please wait."})
     else:
         return 'cached'
-
-@app.route('/forcebuild')
-def forcebuild():
-    return "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
-
 
 ###This function is called by the AJAX.js script to render content based on category
 @app.route('/color')
