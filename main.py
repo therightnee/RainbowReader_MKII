@@ -10,10 +10,13 @@ import timeit
 import pylibmc
 from flask_caching import Cache
 from flask_sslify import SSLify
+from flask_socketio import SocketIO, send, emit
 
 
 mc = Cache()
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'N0NE'
+socketio = SocketIO(app)
 
 if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
     sslify = SSLify(app)
@@ -59,13 +62,19 @@ def index():
 @app.route('/build')
 def build():
     if mc.get('muz') == None:
-        #print("Build completed in %f seconds." % \
-        #    timeit.timeit(reloader, number=1))
-        #timer_str = "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
-        reloader()
-        return render_template('build_wait.html', pass_through = {"msg": "Currently building, please wait."})
+        send('empty', namespace='/cache_build')
     else:
         return 'cached'
+
+@socketio.on('cache_build', namespace='/build_start')
+def cache_builder(message):
+    emit('build_status', {'data': message['Build initiated.']})
+    send('initiated', namespace='/cache_build')
+
+@socketio.on('build_monitor', namespace='/build_start')
+def build_monitor(message):
+    emit('complete', {'data': message["Build completed in %f seconds." % timeit.timeit(reloader, number=1)]})
+
 
 ###This function is called by the AJAX.js script to render content based on category
 @app.route('/color')

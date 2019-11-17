@@ -3,10 +3,24 @@
     <head>
         <title>Rainbow Reader</title>
     </head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico')}}">
     <body>
-        <h1>{{ pass_through.msg }}</h1>
+        <script>
+        $(document).ready(function(){
+            var socket = io.connect('https://' + document.domain + '/build');
+            socket.on('build_initiated', function(msg) {
+                $('#log').append(msg.data);
+            });
+            socket.on('build_completed', function(msg) {
+                $('#log').append(msg.data);
+            });
+
+        });
+        </script>
+        <h1 class="log"></h1>
     </body>
 </html>
