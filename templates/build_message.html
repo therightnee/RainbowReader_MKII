@@ -10,11 +10,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico')}}">
     <body>
         <script>
-        $(document).ready(function(){
-            var socket = io.connect('https://' + document.domain + '/build');
-            socket.on('connect', function() {
-                socket.emit('init', {data: 'connected!'});
-            });
+        var socket = io();
+        socket.on('connect', function() {
+            socket.emit('init', {data: 'connected!'});
         });
         </script>
         <h1 class="log">

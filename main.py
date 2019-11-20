@@ -67,9 +67,9 @@ def build():
     else:
         return render_template('build_message.html', build_status="Cache is built.")
 
-@socketio.on('my event')
-def handle_my_custom_event(json):
-    print('received json: ' + str(json))
+@socketio.on('init')
+def cache_builder(message):
+    print('received json: ' + str(message))
     return render_template('build_message.html', build_status="Cache is built.")
 
 ###This function is called by the AJAX.js script to render content based on category
