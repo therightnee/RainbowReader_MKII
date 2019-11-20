@@ -62,18 +62,14 @@ def index():
 @app.route('/build')
 def build():
     if mc.get('muz') == None:
-        return render_template('build_message.html')
+        return render_template('build_message.html', build_status="Caching RSS feeds.")
         #return "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
     else:
         return 'cached'
 
-def ack():
-    print('message received')
-
 @socketio.on('init')
 def build_monitor(message):
-    print(message)
-    send('Build started', callback=ack)
+    return render_template('build_message.html', build_status='Cache complete.')
     #emit('complete', {'data': message["Build completed in %f seconds." % timeit.timeit(reloader, number=1)]})
 
 

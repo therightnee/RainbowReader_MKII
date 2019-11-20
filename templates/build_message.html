@@ -15,9 +15,10 @@
             socket.on('connect', function() {
                 socket.emit('init', {data: 'connected!'});
             });
-
         });
         </script>
-        <h1 class="log"></h1>
+        <h1 class="log">
+            {{ build_status }}
+        </h1>
     </body>
 </html>
