@@ -62,18 +62,19 @@ def index():
 @app.route('/build')
 def build():
     if mc.get('muz') == None:
-        send('empty', namespace='/cache_build')
+        return render_template('build_message.html')
+        #return "Build completed in %f seconds." % timeit.timeit(reloader, number=1)
     else:
         return 'cached'
 
-@socketio.on('cache_build', namespace='/build_start')
-def cache_builder(message):
-    emit('build_status', {'data': message['Build initiated.']})
-    send('initiated', namespace='/cache_build')
+def ack():
+    print('message received')
 
-@socketio.on('build_monitor', namespace='/build_start')
+@socketio.on('init')
 def build_monitor(message):
-    emit('complete', {'data': message["Build completed in %f seconds." % timeit.timeit(reloader, number=1)]})
+    print(message)
+    send('Build started', callback=ack)
+    #emit('complete', {'data': message["Build completed in %f seconds." % timeit.timeit(reloader, number=1)]})
 
 
 ###This function is called by the AJAX.js script to render content based on category

@@ -12,11 +12,8 @@
         <script>
         $(document).ready(function(){
             var socket = io.connect('https://' + document.domain + '/build');
-            socket.on('build_initiated', function(msg) {
-                $('#log').append(msg.data);
-            });
-            socket.on('build_completed', function(msg) {
-                $('#log').append(msg.data);
+            socket.on('connect', function() {
+                socket.emit('init', {data: 'connected!'});
             });
 
         });
