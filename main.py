@@ -62,11 +62,15 @@ def index():
 @app.route('/build')
 def build():
     if mc.get('muz') == None:
-        render_template('build_message.html', build_status="Caching RSS feeds.")
-        build_time = timeit.timeit(reloader, number=1
-        return build_time
+        return render_template('build_message.html', build_status="Caching RSS feeds.")
+        #build_time = timeit.timeit(reloader, number=1)
     else:
         return render_template('build_message.html', build_status="Cache is built.")
+
+@socketio.on('my event')
+def handle_my_custom_event(json):
+    print('received json: ' + str(json))
+    return render_template('build_message.html', build_status="Cache is built.")
 
 ###This function is called by the AJAX.js script to render content based on category
 @app.route('/color')
