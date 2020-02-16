@@ -113,9 +113,10 @@ body {
   z-index: 10;
   font-size: 72px;
   cursor: pointer;
+  font-weight: 500;
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1200px) {
 
   #nav {
     display: -webkit-flex;
@@ -138,14 +139,23 @@ body {
   }
 
   .format {
-    width: 453px;
+    width: 800px;
+    font-size: 18px;
   }
+
+    .format h1 {
+        font-size: 30px;
+    }
+
+    .format a {
+        font-size: 22px;
+    }
 
 }
 
-@media all and (min-width: 1001px) {
+@media all and (min-width: 1201px) {
   #nav {
-    min-width: 1400px;
+    min-width: 2000px;
   }
 
   .format {

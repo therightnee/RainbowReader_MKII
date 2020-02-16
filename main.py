@@ -1,50 +1,23 @@
 from flask import Flask, request, redirect, url_for, render_template
 from datetime import datetime
 from time import mktime
-#from tzlocal import get_localzone
+from dateutil.tz import tzlocal
 from feed_urls import *
-import feedparser, pytz, os, urllib.parse
+import feedparser, pytz, os, urllib.parse, gc, timeit, pylibmc, redis
 from ast import literal_eval
-import gc
-import timeit
-import pylibmc
-from flask_caching import Cache
+#force SSL
 from flask_sslify import SSLify
-from flask_socketio import SocketIO, send, emit
 
-
-mc = Cache()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'N0NE'
-socketio = SocketIO(app)
+try:
+    redis_db = redis.from_url(os.environ.get("REDIS_URL"))
+else:
+    print("No redis database URL set")
 
 if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
     sslify = SSLify(app)
 
-#connect to memecache servers
-cache_servers = os.environ.get('MEMCACHIER_SERVERS')
-cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
-cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
-mc.init_app(app,
-    config={'CACHE_TYPE': 'saslmemcached',
-            'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
-            'CACHE_MEMCACHED_USERNAME': cache_user,
-            'CACHE_MEMCACHED_PASSWORD': cache_pass,
-            'CACHE_OPTIONS': { 'behaviors': {
-                # Faster IO
-                'tcp_nodelay': True,
-                # Keep connection alive
-                'tcp_keepalive': True,
-                # Timeout for set/get requests
-                'connect_timeout': 2000, # ms
-                'send_timeout': 750 * 1000, # us
-                'receive_timeout': 750 * 1000, # us
-                '_poll_timeout': 2000, # ms
-                # Better failover
-                'ketama': True,
-                'remove_failed': 1,
-                'retry_timeout': 2,
-                'dead_timeout': 30}}})
 ###Views Code Begins
 
 ##Render the basic layout 
@@ -58,25 +31,11 @@ def index():
     return render_template('main.html')
 
 ##Render the content
-
-@app.route('/build')
-def build():
-    if mc.get('muz') == None:
-        return render_template('build_message.html', build_status="Caching RSS feeds.")
-        #build_time = timeit.timeit(reloader, number=1)
-    else:
-        return render_template('build_message.html', build_status="Cache is built.")
-
-@socketio.on('init')
-def cache_builder(message):
-    print('received json: ' + str(message))
-    return render_template('build_message.html', build_status="Cache is built.")
-
 ###This function is called by the AJAX.js script to render content based on category
 @app.route('/color')
 def color():
     category = request.args.get('target', 'news', type=str)
-    cur_category = mc.get(category)
+    cur_category = redis_db.get(category)
     return render_template('content.html', parsed=cur_category)
 
 ##Parse the RSS feeds 
@@ -87,8 +46,8 @@ def parser(link):
         try:
             dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
             #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
-            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
-            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(get_localzone())
+            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
+            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal.get_localzone())
             f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
         except:
             f_dt = 'A Time Unknown'
@@ -100,7 +59,7 @@ def parser(link):
         parsed_items.append(tmp)
     return dict(source = link.source, data = parsed_items)
 
-##Use to build the cache 
+##Functions to parse and store links
 
 def reloader():
     for link_category in all_links:
@@ -112,19 +71,20 @@ def reloader():
             print((object.source))
           except:
             print(object.source + " failed")
-        ##Set the memcache
-        mc.set(link_category, output_data)
+        ##Send key-value dict() to redis database
+        redis_db.set(link_category, output_data)
         print(link_category + " saved")
-
+'''
 def singler(link_set):
     current_set = all_links[link_set]
     output_data = list()
     for object in current_set:
         output_data.append(parser(object))
         print((object.source))
-        ##Set the memcache
-    mc.set(link_set, output_data)
+    ##Send key-value dict() to database via POST
+    redis_db.set(link_set, output_data)
     print(link_set + "saved")
+'''
 
 ###Start the app here
 
