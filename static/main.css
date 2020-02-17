@@ -125,6 +125,7 @@ body {
     flex-direction: row;
     -webkit-justify-content: center;
     justify-content: center;
+    min-width: 700px;
   }
 
   #holder {
@@ -156,7 +157,8 @@ body {
 
 @media all and (min-width: 1601) {
   #nav {
-    min-width: 1600px;
+    min-width: 1200px;
+    background-color: black;
   }
 
   .format {

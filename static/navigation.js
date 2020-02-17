@@ -2,7 +2,6 @@
 var responder = function (bundle_id) {
   $(".category").removeClass("active");
   $("#" + bundle_id).addClass("active");
-  $("#holder").hide().empty();
   $("#nav").removeClass().addClass(bundle_id);
 
   request(bundle_id);

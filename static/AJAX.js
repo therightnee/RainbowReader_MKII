@@ -14,54 +14,9 @@ function request(source) {
     });
   };
 
-//Build the cache
-
-function build() {
-  $.ajax({
-        type: "GET",
-        url: "/build",
-        async: true,
-        success: function() {
-          nav_check();
-        }
-    });
-  };
-
-function cache_check() {
-  $.ajax({
-        type: "GET",
-        url: "/build",
-        async: true,
-        success: function(data) {
-          if (data == 'cached') {
-            nav_check();
-          }
-          else {
-            window.location.replace('/');
-            $("#holder").html("<strong> Please click the title to initialize the cache. </strong>")
-          }
-
-        }
-    });
-  };
-
-
-$("#title").click(function() {
-    $("#holder").html("<strong>Initializing. This may take a minute.</strong>")
-    build()
-});
-
-function nav_check(){
-  //nav check
-    check = window.location.href.split('#');
-    if (typeof check[1] == "undefined"){
-      responder(id_array[0]);
-      window.location.replace("#news");
-    }
-    else {
-      var cur_loc = locations.indexOf(check[1]);
-      responder(id_array[cur_loc]);
-    }
+  function nav_check(){
+    var cur_loc = locations.indexOf(check[1]);
+    responder(id_array[cur_loc]);
 
 };
 
