@@ -26,7 +26,7 @@ $(document).ready ( function(){
   var cur     = window.location.href.split('#');
   var tracker = locations.indexOf(cur[1]);
   responder(id_array[tracker]);
- });​
+ });
 
 // Because modulus doesn't behave properly over negatives
 function mod(a, b) {
