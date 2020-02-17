@@ -139,8 +139,8 @@ body {
   }
 
   .format {
-    width: 800px;
-    font-size: 18px;
+    width: 1080px;
+    font-size: 20px;
   }
 
     .format h1 {
@@ -148,14 +148,15 @@ body {
     }
 
     .format a {
-        font-size: 22px;
+        font-size: 24px;
+        font-weight: 200;
     }
 
 }
 
-@media all and (min-width: 1201px) {
+@media all and (min-width: 1440px) {
   #nav {
-    min-width: 1200px;
+    min-width: 2500px;
   }
 
   .format {
