@@ -2,8 +2,8 @@
 var responder = function (bundle_id) {
   $(".category").removeClass("active");
   $("#" + bundle_id).addClass("active");
+  $("#holder").hide().empty();
   $("#nav").removeClass().addClass(bundle_id);
-
   request(bundle_id);
 };
 
@@ -23,9 +23,9 @@ $(window).on("hashchange", function () {
 // hashchange response function
 // Note that older browsers may not support window.onhashchange
 $(document).ready ( function(){
-    var cur     = window.location.href.split('#');
-    var tracker = locations.indexOf(cur[1]);
-    responder(id_array[tracker]);
+  var cur     = window.location.href.split('#');
+  var tracker = locations.indexOf(cur[1]);
+  responder(id_array[tracker]);
  });​
 
 // Because modulus doesn't behave properly over negatives
