@@ -41,8 +41,8 @@
   };
 
   //default URL set
-  if (window.location.href.includes("#")) == False{
-    window.location.replace("{{url for('static')}}" + "#news");
+  if (window.location.href.indexOf("#") === -1) {
+    window.location.replace(window.location.toString() + "#news");
   };
 </script>
 <script src="{{ url_for('static', filename='AJAX.js')}}"></script>
