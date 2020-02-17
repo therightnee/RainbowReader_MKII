@@ -116,45 +116,47 @@ body {
   font-weight: 900;
 }
 
-@media all and (max-width: 1599) {
+@media all and (max-width: 1600px) {
 
-  #nav {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-justify-content: center;
-    justify-content: center;
-  }
-
-  #holder {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-  }
-
-  .format {
-    width: 900px;
-    font-size: 20px;
-  }
-
-    .format h1 {
-        font-size: 30px;
+    #nav {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-justify-content: center;
+      justify-content: center;
     }
-
-    .format a {
-        font-size: 24px;
-        font-weight: 200;
+  
+    #holder {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
     }
-
+  
+    .format {
+      max-width: 1000px;
+      font-size: 20px;
+    }
+  
+      .format h1 {
+          font-size: 36px;
+      }
+  
+      .format a {
+          font-size: 32px;
+          font-weight: 200;
+          line-height: 80px;
+      }
+  
+  }
 }
 
-@media all and (min-width: 1600) {
+@media all and (min-width: 1600px) {
   #nav {
     min-width: 1200px;
   }
