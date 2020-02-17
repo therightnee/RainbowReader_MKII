@@ -39,6 +39,11 @@
         $("#" + id_array[i]).empty().html(replace_letters[i]);
     };
   };
+
+  //default URL set
+  if (window.location.href.includes("#")) == False{
+    window.location.replace("{{url for('static')}}" + "#news");
+  };
 </script>
 <script src="{{ url_for('static', filename='AJAX.js')}}"></script>
 <script src="{{ url_for('static', filename='navigation.js')}}"></script>
