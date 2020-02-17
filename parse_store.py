@@ -1,4 +1,8 @@
-import redis, json
+from datetime import datetime
+from time import mktime
+from dateutil.tz import tzlocal
+from feed_urls import *
+import feedparser, redis, json
 
 
 try:
@@ -11,6 +15,27 @@ except:
 all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
     rel = religious_links, spo = sport_links, lei = leisure_links, \
     muz = music_links)
+
+##Parse the RSS feeds 
+def parser(link):
+    d = feedparser.parse(link.location)
+    parsed_items = list()
+    for item_count in range(0,10):
+        try:
+            dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
+            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
+            #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
+            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal.get_localzone())
+            f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
+        except:
+            f_dt = 'A Time Unknown'
+        try:
+            f_title = d.entries[item_count].title.split()[:8]
+            tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
+        except:
+            print(link.source)
+        parsed_items.append(tmp)
+    return dict(source = link.source, data = parsed_items)
 
 def reloader():
     for link_category in all_links:
