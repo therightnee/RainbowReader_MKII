@@ -118,6 +118,13 @@ body {
 
 @media all and (max-width: 1600px) {
 
+    #title {
+      font-size: 10;
+      position: fixed;
+      top: 50px;
+      left: 5px;
+    }
+    
     #nav {
       display: -webkit-flex;
       display: flex;
@@ -125,7 +132,14 @@ body {
       flex-direction: row;
       -webkit-justify-content: center;
       justify-content: center;
+      height: 200px;
     }
+  
+    .category, .category.active {
+      font-size: 150px;
+    }
+  
+  
   
     #holder {
       display: -webkit-flex;
@@ -139,8 +153,9 @@ body {
     }
   
     .format {
-      max-width: 1000px;
+      width: 900px;
       font-size: 20px;
+  
     }
   
       .format h1 {
@@ -148,22 +163,23 @@ body {
       }
   
       .format a {
-          font-size: 32px;
-          font-weight: 200;
-          line-height: 80px;
+          font-size: 28px;
+          font-weight: 70000;
+          line-height: 88px
+  
       }
   
-}
-
-
-@media all and (min-width: 1600px) {
-  #nav {
-    min-width: 1200px;
+  #up {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    bottom: 5px;
+    right: -50px;
+    z-index: 10;
+    font-size: 180px;
+    cursor: pointer;
+    font-weight: 900;
   }
-
-  .format {
-    min-width: 200px;
-    max-width: 225px;
+  
+  
   }
-
-}
