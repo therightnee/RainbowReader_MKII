@@ -22,9 +22,6 @@ if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
 
 ##Render the basic layout 
 
-all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
-    rel = religious_links, spo = sport_links, lei = leisure_links, \
-    muz = music_links)
 
 @app.route('/')
 def index():
@@ -59,34 +56,6 @@ def parser(link):
             print(link.source)
         parsed_items.append(tmp)
     return dict(source = link.source, data = parsed_items)
-
-##Functions to parse and store links
-
-def reloader():
-    for link_category in all_links:
-        current_set = all_links[link_category]
-        output_data = list()
-        for object in current_set:
-          try:
-            output_data.append(parser(object))
-            print((object.source))
-          except:
-            print(object.source + " failed")
-        ##Send key-value dict() to redis database
-        format_data = json.dumps(output_data)
-        redis_db.set(link_category, format_data)
-        print(link_category + " saved")
-'''
-def singler(link_set):
-    current_set = all_links[link_set]
-    output_data = list()
-    for object in current_set:
-        output_data.append(parser(object))
-        print((object.source))
-    ##Send key-value dict() to database via POST
-    redis_db.set(link_set, output_data)
-    print(link_set + "saved")
-'''
 
 ###Start the app here
 

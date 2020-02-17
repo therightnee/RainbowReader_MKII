@@ -32,14 +32,6 @@
 
 <script src="{{ url_for('static', filename='variables.js')}}"></script>
 <script>
-  //window size check
-  if (window.innerWidth <= 1440) {
-    $("#title").html('RR');
-    for ( var i=0; i < id_array.length; i++) {
-        $("#" + id_array[i]).empty().html(replace_letters[i]);
-    };
-  };
-
   //default URL set
   if (window.location.href.indexOf("#") === -1) {
     window.location.replace(window.location.toString() + "#news");
