@@ -38,11 +38,15 @@
     //default URL set
     if (window.location.href.indexOf("#") === -1) {
       window.location.replace("#news");
-    };
-    $(document).ready(function() {
-      //remove #up on load
+      responder("new");
       $("#up").hide();
-    });
+    }
+    else {
+        var cur     = window.location.href.split('#');
+        var tracker = locations.indexOf(cur[1]);
+        responder(id_array[tracker]);
+        $("#up").hide();
+    }
   </script>
 
 </body>
