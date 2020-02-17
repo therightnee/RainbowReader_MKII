@@ -120,11 +120,11 @@ body {
 @media all and (max-width: 1600px) {
 
     #title {
-      font-size: 10;
-      position: static;
-      top: 50px;
-      left: 5px;
-    }
+        font-size: 50px;
+        position: relative;
+        top: 5px;
+        left: 5px;
+      }
     
     #nav {
       display: -webkit-flex;
@@ -180,13 +180,14 @@ body {
         height: 200px;
         width: 200px;
         position: fixed;
-        bottom: 5px;
+        bottom: 80px;
         right: -50px;
         z-index: 10;
         font-size: 180px;
         cursor: pointer;
         font-weight: 900;
     }
+  
   
   
   }
