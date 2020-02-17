@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'N0NE'
 try:
     redis_db = redis.from_url(os.environ.get("REDIS_URL"))
-else:
+except:
     print("No redis database URL set")
 
 if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
