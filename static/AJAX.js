@@ -14,9 +14,17 @@ function request(source) {
     });
   };
 
-  function nav_check(){
+function nav_check(){
+//nav check
+    check = window.location.href.split('#');
+    if (typeof check[1] == "undefined"){
+    responder(id_array[0]);
+    window.location.replace("#news");
+    }
+    else {
     var cur_loc = locations.indexOf(check[1]);
     responder(id_array[cur_loc]);
+    }
 
 };
 
