@@ -157,7 +157,6 @@ body {
 @media all and (min-width: 1600) {
   #nav {
     min-width: 1200px;
-    background-color: black;
   }
 
   .format {
