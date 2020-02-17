@@ -2,7 +2,7 @@ from datetime import datetime
 from time import mktime
 from dateutil.tz import tzlocal
 from feed_urls import *
-import feedparser, redis, json
+import feedparser, redis, json, os
 
 
 try:
