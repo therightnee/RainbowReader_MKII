@@ -36,11 +36,14 @@
   if (window.location.href.indexOf("#") === -1) {
     window.location.replace(window.location.toString() + "#news");
   };
+  $(document).ready(function() {
+    //remove #up on load
+    $("#up").hide();
+  });
 </script>
 <script src="{{ url_for('static', filename='AJAX.js')}}"></script>
 <script src="{{ url_for('static', filename='navigation.js')}}"></script>
 <script src="{{ url_for('static', filename='response.js')}}"></script>
-<script src="{{ url_for('static', filename='ready.js')}}"></script>
 
 </body>
 </html>

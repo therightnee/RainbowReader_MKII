@@ -2,7 +2,7 @@ from datetime import datetime
 from time import mktime
 from dateutil.tz import tzlocal
 from feed_urls import *
-import feedparser, redis, json, os
+import feedparser, redis, json, os, pytz
 
 
 try:
@@ -25,7 +25,7 @@ def parser(link):
             dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
             #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
             #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
-            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal.get_localzone())
+            dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal())
             f_dt = datetime.strftime(dt_1, "%B %d | %I:%M %p")
         except:
             f_dt = 'A Time Unknown'
