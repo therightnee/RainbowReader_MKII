@@ -116,7 +116,7 @@ body {
   font-weight: 900;
 }
 
-@media all and (max-width: 1600) {
+@media all and (max-width: 1601) {
 
   #nav {
     display: -webkit-flex;
@@ -154,14 +154,14 @@ body {
 
 }
 
-@media all and (min-width: 1600) {
+@media all and (min-width: 1601) {
   #nav {
-    min-width: 2500px;
+    min-width: 1600px;
   }
 
   .format {
-    min-width: 117px;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 225px;
   }
 
 }

@@ -21,6 +21,14 @@ $(window).on("hashchange", function () {
   responder(id_array[tracker]);
 });
 
+// hashchange response function
+// Note that older browsers may not support window.onhashchange
+$(document).ready ( function(){
+    var cur     = window.location.href.split('#');
+    var tracker = locations.indexOf(cur[1]);
+    responder(id_array[tracker]);
+ });​
+
 // Because modulus doesn't behave properly over negatives
 function mod(a, b) {
   return ((a % b) + b) % b;
