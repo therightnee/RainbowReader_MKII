@@ -26,3 +26,5 @@ def reloader():
         format_data = json.dumps(output_data)
         redis_db.set(link_category, format_data)
         print(link_category + " saved")
+
+reloader()

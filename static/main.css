@@ -116,7 +116,7 @@ body {
   font-weight: 900;
 }
 
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1440px) {
 
   #nav {
     display: -webkit-flex;
