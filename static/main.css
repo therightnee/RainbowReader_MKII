@@ -116,7 +116,7 @@ body {
   font-weight: 900;
 }
 
-@media all and (max-width: 1601) {
+@media all and (max-width: 1599) {
 
   #nav {
     display: -webkit-flex;
@@ -125,7 +125,6 @@ body {
     flex-direction: row;
     -webkit-justify-content: center;
     justify-content: center;
-    min-width: 700px;
   }
 
   #holder {
@@ -155,7 +154,7 @@ body {
 
 }
 
-@media all and (min-width: 1601) {
+@media all and (min-width: 1600) {
   #nav {
     min-width: 1200px;
     background-color: black;
