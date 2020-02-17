@@ -121,7 +121,7 @@ body {
 
     #title {
       font-size: 10;
-      position: fixed;
+      position: static;
       top: 50px;
       left: 5px;
     }
