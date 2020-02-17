@@ -3,7 +3,7 @@ from datetime import datetime
 from time import mktime
 from dateutil.tz import tzlocal
 from feed_urls import *
-import feedparser, pytz, os, urllib.parse, gc, timeit, pylibmc, redis
+import feedparser, pytz, os, urllib.parse, gc, timeit, pylibmc, redis, json
 from ast import literal_eval
 #force SSL
 from flask_sslify import SSLify
@@ -35,7 +35,8 @@ def index():
 @app.route('/color')
 def color():
     category = request.args.get('target', 'news', type=str)
-    cur_category = redis_db.get(category)
+    #cur_category = redis_db.get(category)
+    cur_category = json.loads(redis_db.get(category))
     return render_template('content.html', parsed=cur_category)
 
 ##Parse the RSS feeds 
@@ -72,7 +73,8 @@ def reloader():
           except:
             print(object.source + " failed")
         ##Send key-value dict() to redis database
-        redis_db.set(link_category, output_data)
+        format_data = json.dumps(output_data)
+        redis_db.set(link_category, format_data)
         print(link_category + " saved")
 '''
 def singler(link_set):
