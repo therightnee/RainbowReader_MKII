@@ -30,8 +30,6 @@ def merge(source_list):
         format_list = full_list
     return format_list
 
-
-
 ##Parse the RSS feeds 
 def parser(formatted_list):
     d = formatted_list
@@ -68,4 +66,4 @@ def reloader():
         redis_db.set(link_category, format_data)
         print(link_category + " saved")
 
-reloader()
+#reloader()

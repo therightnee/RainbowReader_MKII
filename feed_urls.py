@@ -26,19 +26,19 @@ class Feed (object):
 #News Lens
 n1 = Feed("關鍵評論網", ["https://feeds.feedburner.com/TheNewsLens"])
 #Aggregate - VOX, Quartz
-n2 = Feed("Aggregate",[])
+n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", "https://cms.qz.com/feed/"])
 #Audit - Politifact, FactCheck
-n3 = Feed("Audit",[])
+n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
 #Libertarian Thinktank
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
 #Left Thinktank
-n5 = Feed("CAP",[""])
+n5 = Feed("CAP",["http://www.aljazeera.com/xml/rss/all.xml"])
 #Aljazeera
 n6 = Feed("AJ",["http://www.aljazeera.com/xml/rss/all.xml"])
 #Center Left Thinktank
 n7 = Feed("Brookings",["http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"])
 #English World - Reuters World, BBC
-n8 = Feed("English World",[])
+n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best", "https://feeds.bbci.co.uk/news/world/rss.xml#"])
 #RFI Appredndre
 n9 = Feed("RFI",["https://savoirs.rfi.fr/fr/apprendre-perfectionner-le-francais/rss"])
 #538 Political Analysis
