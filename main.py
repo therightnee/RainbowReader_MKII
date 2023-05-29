@@ -1,12 +1,14 @@
 from flask import Flask, request, render_template
-import feedparser,redis, json, os
+import redis, json, os, urllib.parse
 #force SSL
 from flask_sslify import SSLify
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'N0NE'
+
 try:
-    redis_db = redis.from_url(os.environ.get("REDIS_URL"))
+    url = urllib.parse.urlparse(os.environ.get('REDISCLOUD_URL'))
+    redis_db = redis.Redis(host=url.hostname, port=url.port, password=url.password)
 except:
     print("No redis database URL set")
 
