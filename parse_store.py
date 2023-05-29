@@ -35,6 +35,7 @@ def merge(source_list):
 ##Parse the RSS feeds 
 def parser(formatted_list):
     d = formatted_list
+    parsed_items = list()
     for item_count in range(0,10):
         try:
             dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
@@ -48,9 +49,9 @@ def parser(formatted_list):
             f_title = d.entries[item_count].title.split()[:8]
             tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
         except:
-            print(link.source)
+            print(formatted_list.source)
         parsed_items.append(tmp)
-    return dict(source = link.source, data = parsed_items)
+    return dict(source = formatted_list.source, data = parsed_items)
 
 def reloader():
     for link_category in all_links:
