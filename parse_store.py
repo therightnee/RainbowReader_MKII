@@ -28,7 +28,6 @@ def merge(source_list):
         format_list = full_list [0:15]
     except:
         format_list = full_list
-    print(format_list)
     return format_list, source_list
 
 ##Parse the RSS feeds 
@@ -54,17 +53,19 @@ def parser(formatted_list, source_list):
 
 def reloader():
     for link_category in all_links:
+        print(link_category)
         current_set = all_links[link_category]
         output_data = list()
         for object in current_set:
           try:
-            output_data.append(parser(merge(object.source)))
+            merge_list, inputs = merge(object.source)
+            output_data.append(parser(merge_list, inputs))
             print((object.category))
           except:
             print(object.category + " failed")
         ##Send key-value dict() to redis database
         format_data = json.dumps(output_data)
-        redis_db.set(link_category, format_data)
+        redis_db.set(str(link_category), format_data)
         print(link_category + " saved")
 
 #reloader()
