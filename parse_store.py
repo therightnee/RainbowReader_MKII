@@ -29,15 +29,15 @@ def merge(source_list):
     except:
         format_list = full_list
     print(format_list)
-    return format_list
+    return format_list, source_list
 
 ##Parse the RSS feeds 
-def parser(formatted_list):
+def parser(formatted_list, source_list):
     d = formatted_list
     parsed_items = list()
     for item_count in range(0,10):
         try:
-            dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
+            dt = datetime.fromtimestamp(mktime(d[item_count].published_parsed))
             #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/New_York'))
             #dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('America/Los_Angeles'))
             dt_1 = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal())
@@ -45,12 +45,12 @@ def parser(formatted_list):
         except:
             f_dt = 'A Time Unknown'
         try:
-            f_title = d.entries[item_count].title.split()[:8]
-            tmp = dict(full_title = d.entries[item_count].title, title = ' '.join(f_title), link = d.entries[item_count].link, pub = f_dt)
+            f_title = d[item_count].title.split()[:8]
+            tmp = dict(full_title = d[item_count].title, title = ' '.join(f_title), link = d[item_count].link, pub = f_dt)
         except:
-            print(formatted_list.source)
+            print(source_list)
         parsed_items.append(tmp)
-    return dict(source = formatted_list.source, data = parsed_items)
+    return dict(source = source_list, data = parsed_items)
 
 def reloader():
     for link_category in all_links:
