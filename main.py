@@ -27,7 +27,6 @@ def index():
 @app.route('/color')
 def color():
     category = request.args.get('target', 'news', type=str)
-    #cur_category = redis_db.get(category)
     cur_category = json.loads(redis_db.get(category))
     return render_template('content.html', parsed=cur_category)
 

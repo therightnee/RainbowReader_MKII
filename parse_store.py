@@ -17,7 +17,7 @@ all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
     muz = music_links)
 
 ##Merge the RSS Feeds
-def merge(source_list):
+def merger(source_list):
     full_list = []
     for source in source_list:
         feed = feedparser.parse(source)
@@ -28,10 +28,10 @@ def merge(source_list):
         format_list = full_list [0:15]
     except:
         format_list = full_list
-    return format_list, source_list
+    return format_list
 
 ##Parse the RSS feeds 
-def parser(formatted_list, source_list):
+def parser(formatted_list):
     d = formatted_list
     parsed_items = list()
     for item_count in range(0,10):
@@ -47,9 +47,9 @@ def parser(formatted_list, source_list):
             f_title = d[item_count].title.split()[:8]
             tmp = dict(full_title = d[item_count].title, title = ' '.join(f_title), link = d[item_count].link, pub = f_dt)
         except:
-            print(source_list)
+            print("Error in time localization")
         parsed_items.append(tmp)
-    return dict(source = source_list, data = parsed_items)
+    return parsed_items
 
 def reloader():
     for link_category in all_links:
@@ -58,8 +58,9 @@ def reloader():
         output_data = list()
         for object in current_set:
           try:
-            merge_list, inputs = merge(object.source)
-            output_data.append(parser(merge_list, inputs))
+            merged_list = merger(object.source)
+            local_time_data = parser(merged_list)
+            output_data.append(dict(source = object.category, data = local_time_data))
             print((object.category))
           except:
             print(object.category + " failed")
@@ -68,4 +69,4 @@ def reloader():
         redis_db.set(str(link_category), format_data)
         print(link_category + " saved")
 
-#reloader()
+reloader()
