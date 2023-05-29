@@ -2,11 +2,10 @@ from datetime import datetime
 from time import mktime
 from dateutil.tz import tzlocal
 from feed_urls import *
-from urllib.parse import urljoin #for Redis Cloud
-import feedparser, redis, json, os, pytz
+import feedparser, redis, json, os, pytz, urllib.parse
 
 try:
-    url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
+    url = urllib.parse.urlparse(os.environ.get('REDISCLOUD_URL'))
     redis_db = redis.Redis(host=url.hostname, port=url.port, password=url.password)
 except:
     print("No redis database URL set")
