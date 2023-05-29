@@ -21,9 +21,9 @@ def merge(source_list):
     full_list = []
     for source in source_list:
         feed = feedparser.parse(source)
-        for entry in feed['items']:
-            full_list.append(full_list)
-    #full_list.sort(key=lambda item: item['updated_parsed'], reverse=True)
+        for entry in feed['entries']:
+            full_list.append(entry)
+    full_list.sort(key=lambda item: item['updated_parsed'], reverse=True)
     try:
         format_list = full_list [0:15]
     except:
