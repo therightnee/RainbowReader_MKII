@@ -16,10 +16,25 @@ all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
     rel = religious_links, spo = sport_links, lei = leisure_links, \
     muz = music_links)
 
+##Merge the RSS Feeds
+def merge(source_list):
+    full_list = []
+    for source in source_list:
+        feed = feedparser.parse(source)
+        for entry in feed['items']:
+            full_list.append(full_list)
+    full_list.sort(key=lambda item: item['updated_parsed'], reverse=True)
+    try:
+        format_list = full_list [0:15]
+    except:
+        format_list = full_list
+    return format_list
+
+
+
 ##Parse the RSS feeds 
-def parser(link):
-    d = feedparser.parse(link.location)
-    parsed_items = list()
+def parser(formatted_list):
+    d = formatted_list
     for item_count in range(0,10):
         try:
             dt = datetime.fromtimestamp(mktime(d.entries[item_count].published_parsed))
@@ -43,10 +58,10 @@ def reloader():
         output_data = list()
         for object in current_set:
           try:
-            output_data.append(parser(object))
-            print((object.source))
+            output_data.append(parser(merge(object)))
+            print((object.category))
           except:
-            print(object.source + " failed")
+            print(object.category + " failed")
         ##Send key-value dict() to redis database
         format_data = json.dumps(output_data)
         redis_db.set(link_category, format_data)
