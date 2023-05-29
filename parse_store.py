@@ -23,11 +23,12 @@ def merge(source_list):
         feed = feedparser.parse(source)
         for entry in feed['items']:
             full_list.append(full_list)
-    full_list.sort(key=lambda item: item['updated_parsed'], reverse=True)
+    #full_list.sort(key=lambda item: item['updated_parsed'], reverse=True)
     try:
         format_list = full_list [0:15]
     except:
         format_list = full_list
+    print(format_list)
     return format_list
 
 ##Parse the RSS feeds 
@@ -57,7 +58,7 @@ def reloader():
         output_data = list()
         for object in current_set:
           try:
-            output_data.append(parser(merge(object)))
+            output_data.append(parser(merge(object.source)))
             print((object.category))
           except:
             print(object.category + " failed")
