@@ -7,7 +7,9 @@ var responder = function (bundle_id) {
   request(bundle_id);
 };
 
-$(".category").on("click tapone", function () {
+//mouse click or tap binding
+
+$(".category").on("vclick", function () {
   var bundle_id = this.id;
   responder(bundle_id);
 });

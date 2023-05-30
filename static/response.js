@@ -1,8 +1,9 @@
 // media query event handler
 if (matchMedia) {
     const mq = window.matchMedia("(max-width: 1600px)");
-    mq.addListener(WidthChange);
-    WidthChange(mq);
+    mq.onchange = (e) => {
+        WidthChange(e);
+      };
     }
     
 // media query change
@@ -25,13 +26,9 @@ function WidthChange(mq) {
             };
             });
 
-            $("#up").click(function() {
-                $(window).scrollTop(0);
-            });
+            //Vclick binding return function for click or touch
 
-            //Tap return function
-
-            $("#up").bind("tapone", function(){
+            $("#up").on("vclick", function(){
                 $(window).scrollTop(0);
             });
         }
