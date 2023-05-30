@@ -1,6 +1,7 @@
 // media query event handler
 if (matchMedia) {
     const mq = window.matchMedia("(max-width: 1600px)");
+    WidthChange(mq);
     mq.onchange = (e) => {
         WidthChange(e);
       };
