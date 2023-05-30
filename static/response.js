@@ -29,7 +29,7 @@ function WidthChange(mq) {
 
             //Vclick binding return function for click or touch
 
-            $("#up").on("vclick", function(){
+            $("#up").on("click tap", function(){
                 $(window).scrollTop(0);
             });
         }
