@@ -6,7 +6,7 @@ if (matchMedia) {
         WidthChange(e);
       };
     }
-    
+
 // media query change
 function WidthChange(mq) {
     if (mq.matches) {

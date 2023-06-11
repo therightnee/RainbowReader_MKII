@@ -31,16 +31,18 @@ n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", "https://cms.qz.com/
 n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
 #Libertarian Thinktank
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
+#European Center for Foreign Relationsh Thinktank
+n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
 #Left Thinktank
-n5 = Feed("CAP",["http://www.aljazeera.com/xml/rss/all.xml"])
-#Aljazeera
-n6 = Feed("AJ",["http://www.aljazeera.com/xml/rss/all.xml"])
+n6 = Feed("CAP",["https://feeds.feedburner.com/kill-the-newsletter/kpsec7eqvba"])
 #Center Left Thinktank
 n7 = Feed("Brookings",["http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"])
-#English World - Reuters World, BBC
-n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best", "https://feeds.bbci.co.uk/news/world/rss.xml#"])
-#RFI Appredndre
-n9 = Feed("RFI",["https://savoirs.rfi.fr/fr/apprendre-perfectionner-le-francais/rss"])
+#English World - Reuters World, BBC, Aljazeera
+n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
+                           "https://feeds.bbci.co.uk/news/world/rss.xml#",
+                           "http://www.aljazeera.com/xml/rss/all.xml"])
+#RFI
+n9 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
 #538 Political Analysis
 n10 = Feed("538",["http://fivethirtyeight.com/politics/feed/"])
 
@@ -52,8 +54,9 @@ t2 = Feed("Verge",["http://www.theverge.com/rss/frontpage"])
 t3 = Feed("Ars",["http://feeds.arstechnica.com/arstechnica/index"])
 t4 = Feed("Toms",["https://www.tomshardware.com/feeds/all"])
 t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
-#Web Design - CSS Tricks, Smashing Mag, Vandelay, Web Design Tuts+
-t6 = Feed("Web Design",[])
+#Web Design - CSS Tricks, Smashing Mag
+t6 = Feed("Web Design",["https://css-tricks.com/feed" ,
+                        "https://www.smashingmagazine.com/feed"])
 t7 = Feed("E&E ",["https://www.eenews.net/articles/feed/"])
 t8 = Feed("Fast Co",["http://feeds.fastcompany.com/fastcompany/headlines"])
 t9 = Feed("Core 77", ["http://feeds.feedburner.com/core77/blog"])
@@ -64,10 +67,11 @@ tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 b1 = Feed("TC",["http://feeds.feedburner.com/TechCrunch/"])
 b2 = Feed("VB",["https://venturebeat.com/tag/startups/feed"])
 #Crypto - Coindesk, CoinTelegraph
-b3 = Feed("Crypto",[])
+b3 = Feed("Crypto",["https://www.coindesk.com/arc/outboundfeeds/rss/" ,
+                    "https://cointelegraph.com/rss"])
 b4 = Feed("Economist",["https://www.economist.com/finance-and-economics/rss.xml"])
 b5 = Feed("HBR",["http://feeds.harvardbusiness.org/harvardbusiness?fo"])
-b6 = Feed("Business Insider",["https://www.businessinsider.com/rss"])
+b6 = Feed("Bloomberg",["https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en"])
 b7 = Feed("Inc.com",["https://www.inc.com/rss/"])
 b8 = Feed("FiTi",["http://business.financialpost.com/category/news/economy/feed"])
 b9 = Feed("Alpha",["http://seekingalpha.com/listing/most-popular-articles.xml"])
@@ -75,8 +79,8 @@ b9 = Feed("Alpha",["http://seekingalpha.com/listing/most-popular-articles.xml"])
 biz_links = (b1,b2,b3,b4,b5,b6,b7,b8,b9)
 
 #RELIGIOUS LINKS
-r1 = Feed("GCC",["http://feeds.feedburner.com/tgcblog"])
-r2 = Feed("Boundless",["http://feeds.feedburner.com/boundlessline/blog?format=xml"])
+r1 = Feed("GCC",["https://www.thegospelcoalition.org/rss"])
+r2 = Feed("RCR",["https://www.realclearreligion.org/index.xml"])
 r3 = Feed("Biologos",["https://wp.biologos.org/feed/"])
 r4 = Feed("CT",["http://feeds.christianitytoday.com/christianitytoday/ctmag/"])
 r5 = Feed("CC",["https://www.christiancentury.org/feed"])
@@ -96,17 +100,22 @@ sport_links = (s1,s2,s3,s4,s5,s6)
 
 #LEISURE LINKS
 #Autos - Autoblog, TTAC
-l1 = Feed("Autos",[])
-#DIY - MAKE, Hack-a-day
-l2 = Feed("DIY",[])
+l1 = Feed("Autos",["https://www.autoblog.com/rss.xml",
+                   "https://www.thetruthaboutcars.com/rss/feed/all"])
+#DIY - Hack-a-day, MAKE
+l2 = Feed("DIY",["https://hackaday.com/feed" ,
+                 "https://makezine.com/category/technology/feed"])
 #SF Focus - SF Eater, 7x7
-l3 = Feed("SF",[])
+l3 = Feed("SF",["https://www.7x7.com/feed"])
 l4 = Feed("Curbly",["https://www.curbly.com/site_index.rss"])
 #Travel - Eat Your World, Out of Town, View from the Wing
-l5 = Feed("Travel",[])
+l5 = Feed("Travel",["https://eatyourworld.com/rss/what_to_eat" ,
+                    "https://outoftownblog.com/feed" ,
+                    "http://viewfromthewing.com/feed/"])
 l6 = Feed("Kitchn",["http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml"])
 #Culinary - Smitten Kitchen, Bright Eyed Baker
-l7 = Feed("Culinary",[])
+l7 = Feed("Culinary",["http://feeds.feedburner.com/smittenkitchen" ,
+                      "https://www.browneyedbaker.com/feed"])
 l8 = Feed("Serious Eats",["http://feeds.feedburner.com/seriouseatsfeaturesvideos"])
 
 leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)

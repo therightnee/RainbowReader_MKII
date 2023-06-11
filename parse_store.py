@@ -30,7 +30,7 @@ def merger(source_list):
         format_list = full_list
     return format_list
 
-##Parse the RSS feeds 
+##Parse the RSS feeds
 def parser(formatted_list):
     d = formatted_list
     parsed_items = list()

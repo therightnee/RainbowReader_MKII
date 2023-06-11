@@ -22,7 +22,7 @@ except:
 
 ###Views Code Begins
 
-##Render the basic layout 
+##Render the basic layout
 
 all_links = dict(new = news_links, tec = tech_links, biz = biz_links, \
     rel = religious_links, spo = sport_links, lei = leisure_links, \
@@ -54,7 +54,7 @@ def color():
     cur_category = mc.get(category)
     return render_template('content.html', parsed=cur_category)
 
-##Parse the RSS feeds 
+##Parse the RSS feeds
 def parser(link):
     d = feedparser.parse(link.location)
     parsed_items = list()
@@ -75,7 +75,7 @@ def parser(link):
         parsed_items.append(tmp)
     return dict(source = link.source, data = parsed_items)
 
-##Use to build the cache 
+##Use to build the cache
 
 def reloader():
     for link_category in all_links:
@@ -103,4 +103,3 @@ def singler(link_set):
 if __name__ == '__main__':
      port = int(os.environ.get('PORT', 5000))
      app.run(host='0.0.0.0', port=port, debug=False)
-

@@ -17,7 +17,7 @@ if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
 
 ###Views Code Begins
 
-##Render the basic layout 
+##Render the basic layout
 @app.route('/')
 def index():
     return render_template('main.html')
@@ -35,4 +35,3 @@ def color():
 if __name__ == '__main__':
      port = int(os.environ.get('PORT', 5000))
      app.run(host='0.0.0.0', port=port, debug=False)
-
