@@ -110,7 +110,6 @@ l3 = Feed("SF",["https://www.7x7.com/feed"])
 l4 = Feed("Curbly",["https://www.curbly.com/site_index.rss"])
 #Travel - Eat Your World, Out of Town, View from the Wing
 l5 = Feed("Travel",["https://feeds.feedburner.com/eatyourworld/dyCj7KO5RG8" ,
-                    "https://outoftownblog.com/feed" ,
                     "http://viewfromthewing.com/feed/"])
 l6 = Feed("Kitchn",["http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml"])
 #Culinary - Smitten Kitchen, Bright Eyed Baker
