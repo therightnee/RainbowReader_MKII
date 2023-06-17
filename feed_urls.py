@@ -31,7 +31,7 @@ n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", "https://cms.qz.com/
 n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
 #Libertarian Thinktank
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
-#European Center for Foreign Relationsh Thinktank
+#European Center for Foreign Relations Thinktank
 n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
 #Left Thinktank
 n6 = Feed("CAP",["https://feeds.feedburner.com/kill-the-newsletter/kpsec7eqvba"])
@@ -49,10 +49,12 @@ n10 = Feed("538",["http://fivethirtyeight.com/politics/feed/"])
 news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
 
 #TECH LINKS
-t1 = Feed("Engadget", ["https://www.engadget.com/rss.xml"])
+# Engadget, Toms Hardware
+t1 = Feed("CE", ["https://www.engadget.com/rss.xml",
+                 "https://www.tomshardware.com/feeds/all"])
 t2 = Feed("Verge",["http://www.theverge.com/rss/frontpage"])
 t3 = Feed("Ars",["http://feeds.arstechnica.com/arstechnica/index"])
-t4 = Feed("Toms",["https://www.tomshardware.com/feeds/all"])
+t4 = Feed("RCE",["https://www.realcleareducation.com/index.xml"])
 t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
 #Web Design - CSS Tricks, Smashing Mag
 t6 = Feed("Web Design",["https://css-tricks.com/feed" ,
@@ -72,7 +74,7 @@ b3 = Feed("Crypto",["https://www.coindesk.com/arc/outboundfeeds/rss/" ,
 b4 = Feed("Economist",["https://www.economist.com/finance-and-economics/rss.xml"])
 b5 = Feed("HBR",["http://feeds.harvardbusiness.org/harvardbusiness?fo"])
 b6 = Feed("Bloomberg",["https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en"])
-b7 = Feed("Inc.com",["https://www.inc.com/rss/"])
+b7 = Feed("RCM",["https://www.realclearmarkets.com/index.xml"])
 b8 = Feed("FiTi",["http://business.financialpost.com/category/news/economy/feed"])
 b9 = Feed("Alpha",["http://seekingalpha.com/listing/most-popular-articles.xml"])
 
@@ -83,20 +85,22 @@ r1 = Feed("GCC",["https://www.thegospelcoalition.org/rss"])
 r2 = Feed("RCR",["https://www.realclearreligion.org/index.xml"])
 r3 = Feed("Biologos",["https://wp.biologos.org/feed/"])
 r4 = Feed("CT",["http://feeds.christianitytoday.com/christianitytoday/ctmag/"])
-r5 = Feed("CC",["https://www.christiancentury.org/feed"])
+r5 = Feed("PN",["https://philosophynews.com/category/article/feed"])
 r6 = Feed("SoJo",["http://feeds.sojo.net/sojourners/blog"])
+r7 = Feed("DN", ["https://dailynous.com/feed/"])
 
-religious_links = (r1,r2,r3,r4,r5,r6)
+religious_links = (r1,r2,r3,r4,r5,r6,r7)
 
 #SPORTS LINKS
 s1 = Feed("ESPN",["http://sports.espn.go.com/espn/rss/news"])
 s2 = Feed("Deadspin",["https://deadspin.com/rss"])
 s3 = Feed("538",["http://fivethirtyeight.com/sports/feed/"])
-s4 = Feed("Great Goals",["http://www.101greatgoals.com/feed/"])
+s4 = Feed("The Athletic",["https://theathletic.com/feeds/rss/news/"])
 s5 = Feed("FBS",["http://feeds.feedburner.com/fbschedulescom?format=xml"])
-s6 = Feed("RCS",["http://www.realclearsports.com/index.xml"])
+s6 = Feed("NYT",["https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml"])
+s7 = Feed("GCN",["https://gcn.com/rss/all/"])
 
-sport_links = (s1,s2,s3,s4,s5,s6)
+sport_links = (s1,s2,s3,s4,s5,s6,s7)
 
 #LEISURE LINKS
 #Autos - Autoblog, TTAC
@@ -108,19 +112,21 @@ l2 = Feed("DIY",["https://hackaday.com/feed" ,
 #SF Focus - SF Eater, 7x7
 l3 = Feed("SF",["https://www.7x7.com/feed"])
 l4 = Feed("Curbly",["https://www.curbly.com/site_index.rss"])
-#Travel - Eat Your World, Out of Town, View from the Wing
-l5 = Feed("Travel",["https://feeds.feedburner.com/eatyourworld/dyCj7KO5RG8" ,
-                    "http://viewfromthewing.com/feed/"])
+#Substack
+l5 = Feed("Substack",["https://www.readmovements.com/feed",
+                      "https://www.newsletter.rideflywheel.com/feed",
+                      "https://micromobility.substack.com/feed",
+                      "https://read.followingthefootprints.com/feed"])
 l6 = Feed("Kitchn",["http://feeds.thekitchn.com/apartmenttherapy/thekitchn?format=xml"])
 #Culinary - Smitten Kitchen, Bright Eyed Baker
-l7 = Feed("Culinary",["http://feeds.feedburner.com/smittenkitchen" ,
+l7 = Feed("Culinary",["http://feeds.feedburner.com/smittenkitchen",
                       "https://www.browneyedbaker.com/feed"])
 l8 = Feed("Serious Eats",["http://feeds.feedburner.com/seriouseatsfeaturesvideos"])
 
 leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)
 
 #MUSIC LINKS
-m1 = Feed("EMPT",["http://www.etmusiquepourtous.com/feed/"])
+m1 = Feed("Pitchfork",["https://pitchfork.com/feed/feed-news/rss"])
 m2 = Feed("FNT",["http://feeds.feedburner.com/freshnewtracks/iyTb"])
 m3 = Feed("Your EDM",["http://www.youredm.com/free-download/feed/"])
 m4 = Feed("DA",["http://www.dancingastronaut.com/music/feed/"])
