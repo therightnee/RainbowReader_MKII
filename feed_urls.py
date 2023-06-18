@@ -33,20 +33,18 @@ n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
 #European Center for Foreign Relations Thinktank
 n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
-#Left Thinktank
-n6 = Feed("CAP",["https://feeds.feedburner.com/kill-the-newsletter/kpsec7eqvba"])
 #Center Left Thinktank
-n7 = Feed("Brookings",["http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"])
+n6 = Feed("Brookings",["http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"])
 #English World - Reuters World, BBC, Aljazeera
-n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
+n7 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
                            "https://feeds.bbci.co.uk/news/world/rss.xml#",
                            "http://www.aljazeera.com/xml/rss/all.xml"])
 #RFI
-n9 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
+n8 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
 #538 Political Analysis
-n10 = Feed("538",["http://fivethirtyeight.com/politics/feed/"])
+n9 = Feed("538",["http://fivethirtyeight.com/politics/feed/"])
 
-news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10)
+news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9)
 
 #TECH LINKS
 # Engadget, Toms Hardware
