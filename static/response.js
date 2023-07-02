@@ -30,7 +30,7 @@ function WidthChange(mq) {
             //Vclick binding return function for click or touch
 
             $("#up").on("click", function(){
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                document.querySelector("#nav").scrollIntoView({
                     behavior: 'smooth'
                 });
             });
