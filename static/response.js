@@ -30,7 +30,7 @@ function WidthChange(mq) {
             //Vclick binding return function for click or touch
 
             $("#up").on("click tap", function(){
-                $(window).scrollTop(0);
+                $(window).scrollTo({top: 0, behavior: 'smooth'});
             });
         }
     }
