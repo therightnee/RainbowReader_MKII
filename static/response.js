@@ -26,6 +26,14 @@ function WidthChange(mq) {
                 $("#up").hide();
             };
             });
+
+            //Vclick binding return function for click or touch
+
+            $("#up").on("click", function(){
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         }
     }
     else {

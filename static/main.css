@@ -115,7 +115,6 @@ body {
   font-size: 72px;
   cursor: pointer;
   font-weight: 900;
-  scroll-behavior: smooth;
 }
 
 @media all and (max-width: 1600px) {
