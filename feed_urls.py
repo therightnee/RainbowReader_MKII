@@ -58,8 +58,9 @@ t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
 t6 = Feed("Web Design",["https://css-tricks.com/feed" ,
                         "https://www.smashingmagazine.com/feed"])
 t7 = Feed("E&E ",["https://www.eenews.net/articles/feed/"])
-t8 = Feed("Fast Co",["http://feeds.fastcompany.com/fastcompany/headlines"])
-t9 = Feed("Core 77", ["http://feeds.feedburner.com/core77/blog"])
+t8 = Feed("City",["https://gcn.com/rss/all/"])
+t9 = Feed("Design", ["http://feeds.fastcompany.com/fastcompany/headlines",
+                        "http://feeds.feedburner.com/core77/blog"])
 
 tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 
@@ -96,7 +97,8 @@ s3 = Feed("538",["http://fivethirtyeight.com/sports/feed/"])
 s4 = Feed("The Athletic",["https://theathletic.com/feeds/rss/news/"])
 s5 = Feed("FBS",["http://feeds.feedburner.com/fbschedulescom?format=xml"])
 s6 = Feed("NYT",["https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml"])
-s7 = Feed("GCN",["https://gcn.com/rss/all/"])
+s7 = Feed("Cycling",["https://www.bicycleretailer.com/rss",
+                    "https://www.bikeradar.com/news/feed/"])
 
 sport_links = (s1,s2,s3,s4,s5,s6,s7)
 
