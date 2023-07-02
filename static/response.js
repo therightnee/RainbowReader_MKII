@@ -26,12 +26,6 @@ function WidthChange(mq) {
                 $("#up").hide();
             };
             });
-
-            //Vclick binding return function for click or touch
-
-            $("#up").on("click tap", function(){
-                $(window).scrollTo({top: 0, behavior: 'smooth'});
-            });
         }
     }
     else {
