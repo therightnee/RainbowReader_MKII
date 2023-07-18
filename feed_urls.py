@@ -66,7 +66,7 @@ tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 
 #BUSINESS LINKS
 b1 = Feed("TC",["http://feeds.feedburner.com/TechCrunch/"])
-b2 = Feed("VB",["https://venturebeat.com/tag/startups/feed"])
+b2 = Feed("VB",["https://venturebeat.com/feed"])
 #Crypto - Coindesk, CoinTelegraph
 b3 = Feed("Crypto",["https://www.coindesk.com/arc/outboundfeeds/rss/" ,
                     "https://cointelegraph.com/rss"])
