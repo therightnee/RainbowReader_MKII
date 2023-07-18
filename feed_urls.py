@@ -128,7 +128,7 @@ leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)
 #MUSIC LINKS
 m1 = Feed("Pitchfork",["https://pitchfork.com/feed/feed-news/rss"])
 m2 = Feed("FNT",["http://feeds.feedburner.com/freshnewtracks/iyTb"])
-m3 = Feed("Your EDM",["http://www.youredm.com/free-download/feed/"])
+m3 = Feed("Your EDM",["http://www.youredm.com/feed/"])
 m4 = Feed("DA",["http://www.dancingastronaut.com/music/feed/"])
 m5 = Feed("Earmilk",["http://feeds2.feedburner.com/earmilk"])
 m6 = Feed("TSiS",["https://thissongissick.com/feed/"])
