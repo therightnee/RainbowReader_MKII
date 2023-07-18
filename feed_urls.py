@@ -65,7 +65,7 @@ t9 = Feed("Design", ["http://feeds.fastcompany.com/fastcompany/headlines",
 tech_links = (t1,t2,t3,t4,t5,t6,t7,t8,t9)
 
 #BUSINESS LINKS
-b1 = Feed("TC",["http://feeds.feedburner.com/TechCrunch/"])
+b1 = Feed("TC",["https://techcrunch.com/feed"])
 b2 = Feed("VB",["https://venturebeat.com/feed"])
 #Crypto - Coindesk, CoinTelegraph
 b3 = Feed("Crypto",["https://www.coindesk.com/arc/outboundfeeds/rss/" ,
