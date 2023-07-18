@@ -84,7 +84,7 @@ r1 = Feed("GCC",["https://www.thegospelcoalition.org/rss"])
 r2 = Feed("RCR",["https://www.realclearreligion.org/index.xml"])
 r3 = Feed("Biologos",["https://wp.biologos.org/feed/"])
 r4 = Feed("CT",["http://feeds.christianitytoday.com/christianitytoday/ctmag/"])
-r5 = Feed("PN",["https://philosophynews.com/category/article/feed"])
+r5 = Feed("PE",["https://blog.practicalethics.ox.ac.uk/feed"])
 r6 = Feed("SoJo",["http://feeds.sojo.net/sojourners/blog"])
 r7 = Feed("DN", ["https://dailynous.com/feed/"])
 
