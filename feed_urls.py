@@ -93,7 +93,7 @@ religious_links = (r1,r2,r3,r4,r5,r6,r7)
 #SPORTS LINKS
 s1 = Feed("ESPN",["http://sports.espn.go.com/espn/rss/news"])
 s2 = Feed("Deadspin",["https://deadspin.com/rss"])
-s3 = Feed("538",["http://fivethirtyeight.com/sports/feed/"])
+s3 = Feed("TSN",["https://www.sportingnews.com/us/rss"])
 s4 = Feed("The Athletic",["https://theathletic.com/feeds/rss/news/"])
 s5 = Feed("FBS",["http://feeds.feedburner.com/fbschedulescom?format=xml"])
 s6 = Feed("NYT",["https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml"])
