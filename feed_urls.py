@@ -58,7 +58,7 @@ t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
 t6 = Feed("Web Design",["https://css-tricks.com/feed" ,
                         "https://www.smashingmagazine.com/feed"])
 t7 = Feed("E&E ",["https://www.eenews.net/articles/feed/"])
-t8 = Feed("City",["https://gcn.com/rss/all/"])
+t8 = Feed("City",["https://www.route-fifty.com/rss/all/"])
 t9 = Feed("Design", ["http://feeds.fastcompany.com/fastcompany/headlines",
                         "http://feeds.feedburner.com/core77/blog"])
 
