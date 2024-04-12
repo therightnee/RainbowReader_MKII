@@ -13,7 +13,7 @@ filelock==3.12.1
 Flask==2.3.2
 Flask-SSLify==0.1.5
 identify==2.5.24
-idna==3.4
+idna==3.7
 importlib-metadata==6.6.0
 itsdangerous==2.1.2
 Jinja2==3.1.3
