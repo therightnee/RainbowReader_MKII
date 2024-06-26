@@ -33,16 +33,16 @@ n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
 #European Center for Foreign Relations Thinktank
 n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
-#Center Left Thinktank
-n6 = Feed("Brookings",["http://webfeeds.brookings.edu/brookingsrss/topfeeds/latestfrombrookings?format=xml"])
+#Center Left Thinktank - https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1
+n6 = Feed("Brookings",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml"])
+#CAP Newsletter Conversion - https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w
+n7 = Feed("CAP",["https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
 #English World - Reuters World, BBC, Aljazeera
-n7 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
+n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
                            "https://feeds.bbci.co.uk/news/world/rss.xml#",
                            "http://www.aljazeera.com/xml/rss/all.xml"])
 #RFI
-n8 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
-#538 Political Analysis
-n9 = Feed("538",["http://fivethirtyeight.com/politics/feed/"])
+n9 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
 
 news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9)
 
