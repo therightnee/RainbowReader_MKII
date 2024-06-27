@@ -33,10 +33,13 @@ n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
 #European Center for Foreign Relations Thinktank
 n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
-#Center Left Thinktank - https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1
-n6 = Feed("Brookings",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml"])
-#CAP Newsletter Conversion - https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w
-n7 = Feed("CAP",["https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
+#Center Left Thinktanks - 
+#Brookings Newsletter - https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1
+#CAP Newsletter - https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w
+n6 = Feed("B&CAP",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml",
+                  "https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
+#538 ABC Feed
+n7 = Feed("538",["https://abcnews.go.com/abcnews/538headlines?allowedType=Story"])
 #English World - Reuters World, BBC, Aljazeera
 n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
                            "https://feeds.bbci.co.uk/news/world/rss.xml#",
