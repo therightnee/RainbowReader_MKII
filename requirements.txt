@@ -1,7 +1,7 @@
 async-timeout==4.0.2
 bidict==0.22.1
 blinker==1.6.2
-certifi==2023.7.22
+certifi==2024.7.4
 cfgv==3.3.1
 charset-normalizer==3.1.0
 click==8.1.3
