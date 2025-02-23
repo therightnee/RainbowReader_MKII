@@ -47,7 +47,7 @@ def parser(formatted_list):
             f_title = d[item_count].title.split()[:8]
             tmp = dict(full_title = d[item_count].title, title = ' '.join(f_title), link = d[item_count].link, pub = f_dt)
         except:
-            print("Error in time localization")
+            print("Error in title parsing")
         parsed_items.append(tmp)
     return parsed_items
 
