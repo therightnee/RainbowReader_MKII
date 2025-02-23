@@ -55,7 +55,7 @@ news_links = (n1,n2,n3,n4,n5,n6,n7,n8,n9)
 # Engadget, Toms Hardware
 t1 = Feed("CE", ["https://www.engadget.com/rss.xml",
                  "https://www.tomshardware.com/feeds/all"])
-t2 = Feed("Verge",["http://www.theverge.com/rss/frontpage"])
+t2 = Feed("Verge",["https://www.theverge.com/rss/index.xml"])
 t3 = Feed("Ars",["http://feeds.arstechnica.com/arstechnica/index"])
 t4 = Feed("RCE",["https://www.realcleareducation.com/index.xml"])
 t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
