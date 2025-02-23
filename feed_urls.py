@@ -26,7 +26,9 @@ class Feed (object):
 #News Lens
 n1 = Feed("關鍵評論網", ["https://feeds.feedburner.com/TheNewsLens"])
 #Aggregate - VOX, Quartz
-n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", "https://cms.qz.com/feed/"])
+n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", 
+                       "https://rss.politico.com/politics-news.xml", 
+                       "https://www.axios.com/feeds/feed.rss"])
 #Audit - Politifact, FactCheck
 n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
 #Libertarian Thinktank
