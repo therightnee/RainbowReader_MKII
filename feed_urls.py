@@ -41,7 +41,7 @@ n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
 n6 = Feed("B&CAP",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml",
                   "https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
 #538 ABC Feed
-n7 = Feed("538",["https://abcnews.go.com/abcnews/538headlines?allowedType=Story"])
+n7 = Feed("Split Ticket",["https://kill-the-newsletter.com/feeds/fbp13eerk8s2a3ilhei8.xml"])
 #English World - Reuters World, BBC, Aljazeera
 n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
                            "https://feeds.bbci.co.uk/news/world/rss.xml#",
