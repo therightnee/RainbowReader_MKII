@@ -40,10 +40,10 @@ n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
 #CAP Newsletter - https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w
 n6 = Feed("B&CAP",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml",
                   "https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
-#538 ABC Feed
-n7 = Feed("Split Ticket",["https://kill-the-newsletter.com/feeds/fbp13eerk8s2a3ilhei8.xml"])
+#538 Pew Research
+n7 = Feed("Pew",["https://www.pewresearch.org/publications/feed/"])
 #English World - Reuters World, BBC, Aljazeera
-n8 = Feed("English World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
+n8 = Feed("World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
                            "https://feeds.bbci.co.uk/news/world/rss.xml#",
                            "http://www.aljazeera.com/xml/rss/all.xml"])
 #RFI
