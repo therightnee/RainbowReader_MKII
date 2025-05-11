@@ -25,27 +25,24 @@ class Feed (object):
 #NEWS LINKS
 #News Lens
 n1 = Feed("關鍵評論網", ["https://feeds.feedburner.com/TheNewsLens"])
-#Aggregate - VOX, Quartz
-n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", 
-                       "https://rss.politico.com/politics-news.xml", 
+#Aggregate - Politico, Axios
+n2 = Feed("Aggregate",[ "https://rss.politico.com/politics-news.xml", 
                        "https://www.axios.com/feeds/feed.rss"])
 #Audit - Politifact, FactCheck
-n3 = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
+#DEPRECATED = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
+#ProPublica
+n3 = Feed("ProPublica", ["https://www.propublica.org/feeds/propublica/main"])
 #Libertarian Thinktank
 n4 = Feed("CATO",["https://www.cato.org/rss/recent-opeds"])
 #European Center for Foreign Relations Thinktank
 n5 = Feed("ECFR",["https://ecfr.eu/feed/"])
-#Center Left Thinktanks - 
 #Brookings Newsletter - https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1
-#CAP Newsletter - https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w
-n6 = Feed("B&CAP",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml",
-                  "https://kill-the-newsletter.com/feeds/ygmz0fe20utrdsnlz01w.xml"])
+n6 = Feed("Brookings",["https://kill-the-newsletter.com/feeds/860g6qecsg9tkj5qmzg1.xml"])
 #538 Pew Research
 n7 = Feed("Pew",["https://www.pewresearch.org/publications/feed/"])
 #English World - Reuters World, BBC, Aljazeera
-n8 = Feed("World",["https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best",
-                           "https://feeds.bbci.co.uk/news/world/rss.xml#",
-                           "http://www.aljazeera.com/xml/rss/all.xml"])
+n8 = Feed("World",["https://feeds.bbci.co.uk/news/world/rss.xml#",
+                   "http://www.aljazeera.com/xml/rss/all.xml"])
 #RFI
 n9 = Feed("RFI",["https://www.rfi.fr/fr/rss"])
 
@@ -57,7 +54,8 @@ t1 = Feed("CE", ["https://www.engadget.com/rss.xml",
                  "https://www.tomshardware.com/feeds/all"])
 t2 = Feed("Verge",["https://www.theverge.com/rss/index.xml"])
 t3 = Feed("Ars",["http://feeds.arstechnica.com/arstechnica/index"])
-t4 = Feed("RCE",["https://www.realcleareducation.com/index.xml"])
+#404 Media Newsletter - https://kill-the-newsletter.com/feeds/jribskj6xpi9uyo4wj9z.xml
+t4 = Feed("404",["https://kill-the-newsletter.com/feeds/jribskj6xpi9uyo4wj9z.xml"])
 t5 = Feed("Hacker News",["https://news.ycombinator.com/rss"])
 #Web Design - CSS Tricks, Smashing Mag
 t6 = Feed("Web Design",["https://css-tricks.com/feed" ,
