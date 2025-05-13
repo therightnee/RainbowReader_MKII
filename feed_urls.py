@@ -25,8 +25,9 @@ class Feed (object):
 #NEWS LINKS
 #News Lens
 n1 = Feed("關鍵評論網", ["https://feeds.feedburner.com/TheNewsLens"])
-#Aggregate - Politico, Axios
-n2 = Feed("Aggregate",[ "https://rss.politico.com/politics-news.xml", 
+#Aggregate - VOX, Politico, Axios
+n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", 
+                       "https://rss.politico.com/politics-news.xml", 
                        "https://www.axios.com/feeds/feed.rss"])
 #Audit - Politifact, FactCheck
 #DEPRECATED = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
