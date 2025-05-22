@@ -90,7 +90,7 @@ r3 = Feed("Biologos",["https://wp.biologos.org/feed/"])
 r4 = Feed("CT",["https://www.christianitytoday.com/feed"])
 r5 = Feed("PE",["https://blog.practicalethics.ox.ac.uk/feed"])
 r6 = Feed("SoJo",["http://feeds.sojo.net/sojourners/blog"])
-r7 = Feed("DN", ["https://dailynous.com/feed/"])
+r7 = Feed("Aeon", ["https://kill-the-newsletter.com/feeds/239bsb0q97c8wxucmlmm.xml"])
 
 religious_links = (r1,r2,r3,r4,r5,r6,r7)
 
