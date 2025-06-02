@@ -99,7 +99,7 @@ s2 = Feed("Deadspin",["https://deadspin.com/rss"])
 s3 = Feed("TSN",["https://www.sportingnews.com/us/rss"])
 s4 = Feed("The Athletic",["https://theathletic.com/feeds/rss/news/"])
 s5 = Feed("FBS",["http://feeds.feedburner.com/fbschedulescom?format=xml"])
-s6 = Feed("NYT",["https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml"])
+s6 = Feed("F1",["https://www.autosport.com/rss/f1/news/"])
 s7 = Feed("Cycling",["https://www.bicycleretailer.com/rss",
                     "https://www.bikeradar.com/news/feed/"])
 
