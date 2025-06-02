@@ -124,10 +124,10 @@ l6 = Feed("Kitchn",["http://feeds.thekitchn.com/apartmenttherapy/thekitchn?forma
 #Culinary - Smitten Kitchen, Bright Eyed Baker
 l7 = Feed("Culinary",["http://feeds.feedburner.com/smittenkitchen",
                       "https://www.browneyedbaker.com/feed"])
-l8 = Feed("Serious Eats",["http://feeds.feedburner.com/seriouseatsfeaturesvideos"])
+l8 = Feed("Serious Eats",["https://feeds.feedburner.com/seriouseats"])
 l9 = Feed("Vox",["https://www.vox.com/rss/index.xml"])
 
-leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)
+leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8,l9)
 
 #MUSIC LINKS
 m1 = Feed("Pitchfork",["https://pitchfork.com/feed/feed-news/rss"])
