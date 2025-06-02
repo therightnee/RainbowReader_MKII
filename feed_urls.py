@@ -25,9 +25,8 @@ class Feed (object):
 #NEWS LINKS
 #News Lens
 n1 = Feed("關鍵評論網", ["https://feeds.feedburner.com/TheNewsLens"])
-#Aggregate - VOX, Politico, Axios
-n2 = Feed("Aggregate",["https://www.vox.com/rss/index.xml", 
-                       "https://rss.politico.com/politics-news.xml", 
+#Aggregate - Politico, Axios
+n2 = Feed("Aggregate",["https://rss.politico.com/politics-news.xml", 
                        "https://www.axios.com/feeds/feed.rss"])
 #Audit - Politifact, FactCheck
 #DEPRECATED = Feed("Audit",["https://www.politifact.com/rss/all/", "https://www.factcheck.org/feed/"])
@@ -126,6 +125,7 @@ l6 = Feed("Kitchn",["http://feeds.thekitchn.com/apartmenttherapy/thekitchn?forma
 l7 = Feed("Culinary",["http://feeds.feedburner.com/smittenkitchen",
                       "https://www.browneyedbaker.com/feed"])
 l8 = Feed("Serious Eats",["http://feeds.feedburner.com/seriouseatsfeaturesvideos"])
+l9 = Feed("Vox",["https://www.vox.com/rss/index.xml"])
 
 leisure_links = (l1,l2,l3,l4,l5,l6,l7,l8)
 
